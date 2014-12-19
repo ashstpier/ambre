@@ -1,18 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="ambre">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Test</title>
+  <title>Ambre</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+  <script src="core.js"></script>
 </head>
-<body>
-
-<header>
+<body ng-controller="mainController">
   <div class="container">
-   Logged in
+    <div class="jumbotron text-center">
+        <h1>I'm a Todo-aholic <span class="label label-info">{{ playlists }}</span></h1>
+    </div>
   </div>
-</header>
-
 </body>
 </html>
