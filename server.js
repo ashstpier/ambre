@@ -1,13 +1,13 @@
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var methodOverride = require('method-override');
-var SpotifyWebApi = require('spotify-web-api-node');
-var passport = require('passport');
-var SpotifyStrategy = require('passport-spotify').Strategy;
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+
+var passport = require('passport');
+var SpotifyStrategy = require('passport-spotify').Strategy;
 var SpotifyWebApi = require('spotify-web-api-node');
 
 var client_id = 'f2023f2525674f1fb50cd9459605d49d'; // Your client id
@@ -32,7 +32,7 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-///////////////// USE THE ACCESS TOKEN FROM FUNCTION BELOW //////////////////
+var user
 
 passport.use(new SpotifyStrategy({
     clientID: client_id,
@@ -41,6 +41,8 @@ passport.use(new SpotifyStrategy({
   },
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
+      spotifyApi.setAccessToken(accessToken);
+      user = profile.username;
       return done(null, profile);
     });
   }
@@ -52,46 +54,41 @@ var app = express();
 var router = express.Router();
 
 app.use(cookieParser());
-app.use(bodyParser());
-app.use(methodOverride());
+app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
-app.use(session({ secret: 'keyboard cat' }));
+app.use(session({ secret: 'jfd74hwjkds97453kjfhsf' }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', router);
 
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/public');
+
 ///// ROUTES /////
 
-router.get('/', function(req, res){
-  res.sendfile('public/views/login.html', { user: req.user });
-});
+require('./app/routes')(router, passport);
 
-router.get('/app', ensureAuthenticated, function(req, res){
-  res.sendfile('public/views/app.html', { user: req.user });
-});
+///// SPOTIFY API /////
 
-router.get('/login',
-  passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private']}),
-  function(req, res){});
-
-router.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
-
-router.get('/callback',
-  passport.authenticate('spotify', {failureRedirect: '/login'}),
-  function(req, res) {
-    res.redirect('/app');
-  });
-
-///// API /////
-
-app.get('/api/playlists', function(req, res) {
-  spotifyApi.getArtist('2hazSY4Ef3aB9ATXW7F5w3')
+router.get('/api/profile', function(req, res) {
+  spotifyApi.getMe()
     .then(function(data) {
+      console.log('Some information about the authenticated user', data);
       res.json(data);
     }, function(err) {
+      console.log('Something went wrong!', err);
+    });
+});
+
+router.get('/api/playlists', function(req, res) {
+  spotifyApi.getUserPlaylists(user)
+    .then(function(data) {
+      console.log('Retrieved playlists', data);
+      res.json(data);
+    },function(err) {
       console.log('Something went wrong!', err);
     });
 });
@@ -101,7 +98,4 @@ app.get('/api/playlists', function(req, res) {
 console.log('Listening on 8888');
 app.listen(8888);
 
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login');
-}
+exports = module.exports = app;
