@@ -1,0 +1,11 @@
+<div class="panel panel-default" ng-repeat="mixtape in mixtapes">
+  <div class="panel-heading">{{ mixtape.title }} <span class="label label-default">{{ mixtape.createdAt | date:'dd MMM yyyy'}}</span></div>
+  <div class="panel-body">
+    <p>{{ mixtape.description }}</p>
+    <p>{{ mixtape }}</p>
+    <ol>
+      <li ng-repeat="track in mixtape.tracks">{{ track.name }} - {{ track.artist }}</li>
+    </ol>
+    <button type="button" class="btn btn-danger btn-xs" ng-click="deleteMixtape(mixtape._id)">Delete</button>
+  </div>
+</div>

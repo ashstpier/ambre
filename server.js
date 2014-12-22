@@ -5,6 +5,7 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var mongoose = require('mongoose');
 
 var passport = require('passport');
 var SpotifyStrategy = require('passport-spotify').Strategy;
@@ -13,7 +14,6 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var client_id = 'f2023f2525674f1fb50cd9459605d49d'; // Your client id
 var client_secret = 'b0324f076acb40f8b002126b12237ffd'; // Your client secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
-var scopes = ['user-read-private', 'user-read-email'];
 var state = 'ambre-state';
 
 ///// OAUTH /////
@@ -32,8 +32,6 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-var user
-
 passport.use(new SpotifyStrategy({
     clientID: client_id,
     clientSecret: client_secret,
@@ -42,56 +40,46 @@ passport.use(new SpotifyStrategy({
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
       spotifyApi.setAccessToken(accessToken);
-      user = profile.username;
       return done(null, profile);
     });
   }
 ));
 
+///// DATABASE /////
+
+var database = require('./config/database');
+
+mongoose.connect(database.url, database.options);
+var conn = mongoose.connection;
+
+conn.on('error', console.error.bind(console, 'connection error:'));
+
+conn.once('open', function() {
+  console.log('Database connected!')
+});
+
 ///// APP /////
 
 var app = express();
-var router = express.Router();
 
+app.use(express.static(__dirname + '/public'));                 // set the static files location /public/img will be /img for users
+app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
+app.use(bodyParser.json());                                     // parse application/json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
+app.use(methodOverride());
 app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride('X-HTTP-Method-Override'));
-app.use(express.static(__dirname + '/public'));
 app.use(session({ secret: 'jfd74hwjkds97453kjfhsf' }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use('/', router);
 
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/public');
 
 ///// ROUTES /////
 
-require('./app/routes')(router, passport);
-
-///// SPOTIFY API /////
-
-router.get('/api/profile', function(req, res) {
-  spotifyApi.getMe()
-    .then(function(data) {
-      console.log('Some information about the authenticated user', data);
-      res.json(data);
-    }, function(err) {
-      console.log('Something went wrong!', err);
-    });
-});
-
-router.get('/api/playlists', function(req, res) {
-  spotifyApi.getUserPlaylists(user)
-    .then(function(data) {
-      console.log('Retrieved playlists', data);
-      res.json(data);
-    },function(err) {
-      console.log('Something went wrong!', err);
-    });
-});
+require('./app/auth-routes')(app, passport);
+require('./app/routes')(app);
+require('./app/spotify-api')(app, spotifyApi);
 
 ///// START SERVER /////
 

@@ -1,12 +1,20 @@
-var ambre = angular.module('ambre', []);
+angular.module('ambre', ['mixtapeController', 'mixtapeService', 'ngRoute'])
 
-function mainController($scope, $http) {
+  .config(function($routeProvider) {
+    $routeProvider
 
-  $http.get('/api/playlists')
-    .success(function(data) {
-      $scope.playlists = data;
-    })
-    .error(function(data) {
-      console.log('Error: ' + data);
-    });
-}
+      .when('/', {
+        templateUrl : '../views/mixtapes/new.html',
+        controller  : 'mixtapeController'
+      })
+
+      .when('/', {
+        templateUrl : '../views/mixtapes/new.html',
+        controller  : 'mixtapeController'
+      })
+
+      .when('/user/mixtapes', {
+        templateUrl : '../views/user/mixtapes.html',
+        controller  : 'mixtapeController'
+      })
+  });

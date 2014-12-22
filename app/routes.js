@@ -1,32 +1,46 @@
-module.exports = function(router, passport){
+var Mixtape = require('./models/mixtape');
 
-  ///// APP ROUTES /////
+module.exports = function(app){
 
-  router.get('/', ensureAuthenticated, function(req, res){
-    res.render('app.ejs', { user: req.user });
-  });
-
-  router.get('/login', function(req, res){
-    res.render('login.ejs', { user: req.user });
-  });
-
-  router.get('/authenticate',
-    passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private']}),
-    function(req, res){});
-
-  router.get('/callback',
-    passport.authenticate('spotify', {failureRedirect: '/login'}),
-    function(req, res) {
-      res.redirect('/');
+  app.get('/api/mixtapes', function(req, res) {
+    Mixtape.find(function(err, mixtapes) {
+      if (err)
+        res.send(err)
+      res.json(mixtapes);
     });
-
-  router.get('/logout', function(req, res){
-    req.logout();
-    res.redirect('/');
   });
 
-  function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated()) { return next(); }
-    res.redirect('/login');
-  }
+  app.post('/api/mixtapes', function(req, res) {
+    Mixtape.create({
+      title : req.body.title,
+      description : req.body.description,
+      tracks : req.body.tracks,
+      track_uris : req.body.track_uris,
+      playlist_id : req.body.playlist_id
+    }, function(err, mixtape) {
+      if (err)
+        res.send(err);
+
+      Mixtape.find(function(err, mixtapes) {
+        if (err)
+          res.send(err)
+        res.json(mixtapes);
+      });
+    });
+  });
+
+  app.delete('/api/mixtapes/:mixtape_id', function(req, res) {
+    Mixtape.remove({
+      _id : req.params.mixtape_id
+    }, function(err, mixtape) {
+      if (err)
+        res.send(err);
+
+      Mixtape.find(function(err, mixtapes) {
+        if (err)
+          res.send(err)
+        res.json(mixtapes);
+      });
+    });
+  });
 }
