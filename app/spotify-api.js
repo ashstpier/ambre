@@ -26,7 +26,6 @@ module.exports = function(app, spotifyApi){
     spotifyApi.createPlaylist(req.user.username, req.body.title, { 'public' : true })
       .then(function(data) {
         console.log('Created playlist!');
-        console.log(data)
         res.json(data);
       }, function(err) {
         console.log('Something went wrong!', err);

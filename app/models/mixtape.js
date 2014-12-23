@@ -3,6 +3,7 @@ var timestamps = require('mongoose-timestamp');
 var Schema = mongoose.Schema;
 
 var MixtapeSchema = new Schema({
+  author : String,
   title : String,
   description: String,
   tracks: Array,

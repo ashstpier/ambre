@@ -2,7 +2,7 @@
   <div class="panel-heading">{{ mixtape.title }} <span class="label label-default">{{ mixtape.createdAt | date:'dd MMM yyyy'}}</span></div>
   <div class="panel-body">
     <p>{{ mixtape.description }}</p>
-    <p>{{ mixtape }}</p>
+    <p>{{ mixtape.author }}</p>
     <ol>
       <li ng-repeat="track in mixtape.tracks">{{ track.name }} - {{ track.artist }}</li>
     </ol>

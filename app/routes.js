@@ -12,10 +12,10 @@ module.exports = function(app){
 
   app.post('/api/mixtapes', function(req, res) {
     Mixtape.create({
+      author : req.user.username,
       title : req.body.title,
       description : req.body.description,
       tracks : req.body.tracks,
-      track_uris : req.body.track_uris,
       playlist_id : req.body.playlist_id
     }, function(err, mixtape) {
       if (err)
@@ -41,6 +41,14 @@ module.exports = function(app){
           res.send(err)
         res.json(mixtapes);
       });
+    });
+  });
+
+  app.get('/api/user/mixtapes', function(req, res) {
+    Mixtape.find({ 'author': req.user.username }, function(err, mixtapes) {
+      if (err)
+        res.send(err)
+      res.json(mixtapes);
     });
   });
 }
