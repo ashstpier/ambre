@@ -1,11 +1,11 @@
-angular.module('ambre', ['createMixtape', 'addTracks', 'userMixtapes', 'mixtapeService', 'ngRoute', 'ngCookies'])
+angular.module('ambre', ['createMixtape', 'addTracks', 'userMixtapes', 'allMixtapes', 'mixtapeService', 'ngRoute', 'ngCookies'])
 
   .config(function($routeProvider) {
     $routeProvider
 
       .when('/', {
-        templateUrl : '../views/mixtapes/createmixtape.html',
-        controller  : 'createMixtape'
+        templateUrl : '../views/mixtapes/all.html',
+        controller  : 'allMixtapes'
       })
 
       .when('/mixtape/new', {
