@@ -1,11 +1,13 @@
-<div class="panel panel-default" ng-repeat="mixtape in mixtapes">
+<div class="panel panel-default" ng-repeat="mixtape in mixtapes | orderBy:createdAt:reverse">
   <div class="panel-heading">{{ mixtape.title }} <span class="label label-default">{{ mixtape.createdAt | date:'dd MMM yyyy'}}</span></div>
   <div class="panel-body">
     <p>{{ mixtape.description }}</p>
     <p>{{ mixtape.author }}</p>
+    <iframe src="https://embed.spotify.com/?uri=spotify:trackset:title:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT,4bi73jCM02fMpkI11Lqmfe" frameborder="0" allowtransparency="true"></iframe>
     <ol>
-      <li ng-repeat="track in mixtape.tracks">{{ track.name }} - {{ track.artist }}</li>
+      <li ng-repeat="track in mixtape.tracks">{{ track.name }} - {{ track.id }}</li>
     </ol>
+    <button type="button" class="btn btn-primary btn-xs" ng-click="downloadPlaylist(mixtape)">Play mixtape</button>
     <button type="button" class="btn btn-danger btn-xs" ng-click="deleteMixtape(mixtape._id)">Delete</button>
   </div>
 </div>

@@ -25,23 +25,18 @@ module.exports = function(app, spotifyApi){
   app.post('/spotify/createplaylist', function(req, res) {
     spotifyApi.createPlaylist(req.user.username, req.body.title, { 'public' : true })
       .then(function(data) {
-        console.log('Created playlist!');
+        var tracks = _.map(req.body.tracks, function(track){ return track.uri; });
+
+        spotifyApi.replaceTracksInPlaylist(req.user.username, data.id, tracks)
+          .then(function(data) {
+            console.log('Downloaded playlist!');
+          }, function(err) {
+            console.log('Something went wrong!', err);
+        });
         res.json(data);
       }, function(err) {
         console.log('Something went wrong!', err);
       });
-  });
-
-  app.post('/spotify/addsongs', function(req, res) {
-
-    var tracks = _.map(req.body.tracks, function(track){ return track.uri; });
-
-    spotifyApi.replaceTracksInPlaylist(req.user.username, req.body.playlist_id, tracks)
-      .then(function(data) {
-        console.log('Added tracks to playlist!');
-      }, function(err) {
-        console.log('Something went wrong!', err);
-    });
   });
 
   app.get('/spotify/search/:search_term', function(req, res) {

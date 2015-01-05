@@ -17,6 +17,7 @@ angular.module('addTracks', [])
       if ($scope.tracks.length <= 19) {
         var track = {
           uri: track.uri,
+          id: track.id,
           name: track.name,
           artist: track.artists[0].name,
           album: track.album.name
@@ -28,9 +29,6 @@ angular.module('addTracks', [])
     };
 
     $scope.saveMixtape = function() {
-
-      $http.post('/spotify/addsongs', CurrentMixtape.get())
-        .success(function(data) {});
 
       Mixtapes.create($scope.mixtape)
         .success(function(data) {

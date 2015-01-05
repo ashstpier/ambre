@@ -11,18 +11,8 @@ angular.module('createMixtape', [])
           description: $scope.formData.description
         };
 
-        $http.post('/spotify/createplaylist', $scope.mixtape)
-          .success(function(data) {
-
-            $scope.mixtape.playlist_id = data.id;
-
-            CurrentMixtape.set($scope.mixtape);
-            $location.path('/mixtape/tracks');
-
-          })
-          .error(function(data) {
-            console.log('Error: ' + data);
-          });
+        CurrentMixtape.set($scope.mixtape);
+        $location.path('/mixtape/tracks');
       }
     };
   });
