@@ -9,7 +9,7 @@ angular.module('userMixtapes', [])
     $scope.downloadPlaylist = function(mixtape) {
       $http.post('/spotify/createplaylist', mixtape)
         .success(function(data) {
-          window.open('https://play.spotify.com/user/shaylepriest/playlist/' + data.id);
+          window.open('https://open.spotify.com/user/' + data.owner.id + '/playlist/' + data.id);
         });
     };
 
