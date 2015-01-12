@@ -5,7 +5,7 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var mongoose = require('mongoose');
+var postgres = require('pg');
 
 var passport = require('passport');
 var SpotifyStrategy = require('passport-spotify').Strategy;
@@ -49,14 +49,13 @@ passport.use(new SpotifyStrategy({
 
 var database = require('./config/database');
 
-mongoose.connect(database.url, database.options);
-var conn = mongoose.connection;
+///// MODELS /////
 
-conn.on('error', console.error.bind(console, 'connection error:'));
+var Soundtrack = require('./app/models/soundtrack')(database);
+var Book = require('./app/models/book')(database);
 
-conn.once('open', function() {
-  console.log('Database connected!')
-});
+Book.hasMany(Soundtrack)
+Soundtrack.belongsTo(Book)
 
 ///// APP /////
 
@@ -78,7 +77,9 @@ app.set('views', __dirname + '/public');
 ///// ROUTES /////
 
 require('./app/auth-routes')(app, passport);
-require('./app/routes')(app);
+require('./app/soundtrack-routes')(app, Soundtrack, Book);
+require('./app/book-routes')(app, Book);
+require('./app/book-api')(app);
 require('./app/spotify-api')(app, spotifyApi);
 
 ///// START SERVER /////

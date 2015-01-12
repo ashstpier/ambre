@@ -1,12 +1,30 @@
-var uriUtil = require('mongodb-uri');
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize('ambre', 'ashstpier', null, {
+  dialect: 'postgres',
+  port:    5432,
+})
 
-var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
-                replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };
+sequelize
+  .authenticate()
+  .complete(function(err) {
+    if (!!err) {
+      console.log('Unable to connect to the database:', err)
+    } else {
+      console.log('Connection has been established successfully.')
+    }
+  })
 
-var mongodbUri = 'mongodb://admin:password@ds027521.mongolab.com:27521/ambre';
-var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+sequelize
+  .sync()
+  .complete(function(err) {
+     if (!!err) {
+       console.log('An error occurred while creating the table:', err)
+     } else {
+       console.log('It worked!')
+     }
+  })
 
 module.exports = {
-  url : mongooseUri,
-  options : options
+  sequelize : sequelize,
+  dataType : Sequelize
 };

@@ -1,15 +1,12 @@
-angular.module('addTracks', [])
-  .controller('addTracks', function($scope, $http, $location, Mixtapes, CurrentMixtape) {
+angular.module('addSongs', [])
+  .controller('addSongs', function($scope, $http, $location, Soundtrack, Spotify, CurrentBook) {
     $scope.tracks = [];
-    $scope.mixtape = CurrentMixtape.get();
+    $scope.book = CurrentBook.get();
 
     $scope.searchTrack = function(term) {
-      $http.get('/spotify/search/' + term)
+      Spotify.search(term)
         .success(function(data) {
           $scope.search_results = data.tracks.items;
-        })
-        .error(function(data) {
-          console.log('Error: ' + data);
         });
     };
 
@@ -23,17 +20,15 @@ angular.module('addTracks', [])
           album: track.album.name
         }
         $scope.tracks.push(track);
-        $scope.mixtape.tracks = $scope.tracks;
-        CurrentMixtape.set($scope.mixtape);
       }
     };
 
-    $scope.saveMixtape = function() {
+    $scope.saveSoundtrack = function() {
 
-      Mixtapes.create($scope.mixtape)
+      Soundtrack.create($scope.book, $scope.tracks)
         .success(function(data) {
-          $location.path('/user/mixtapes')
-          CurrentMixtape.del();
+          CurrentBook.del()
+          $location.path('/new/songs');
         });
     };
   });

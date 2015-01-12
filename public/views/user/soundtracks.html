@@ -1,0 +1,13 @@
+<div class="panel panel-default" ng-model="soundtracks" ng-repeat="soundtrack in soundtracks | orderBy:createdAt:reverse">
+  <div class="panel-heading">{{ soundtrack.title }} <span class="label label-default">{{ soundtrack.createdAt | date:'dd MMM yyyy'}}</span></div>
+  <div class="panel-body">
+    <p>{{ soundtrack.description }}</p>
+    <p>{{ soundtrack.author }}</p>
+    <iframe src="https://embed.spotify.com/?uri=spotify:trackset:title:5Z7ygHQo02SUrFmcgpwsKW,1x6ACsKV4UdWS2FMuPFUiT,4bi73jCM02fMpkI11Lqmfe" frameborder="0" allowtransparency="true"></iframe>
+    <ol>
+      <li ng-repeat="track in soundtrack.tracks track by $index">{{ track.name }} - {{ track.artist }}</li>
+    </ol>
+    <button type="button" class="btn btn-primary btn-xs" ng-click="downloadPlaylist(soundtrack)">Play soundtrack</button>
+    <button type="button" class="btn btn-danger btn-xs" ng-click="deleteSoundtrack(soundtrack._id)">Delete</button>
+  </div>
+</div>

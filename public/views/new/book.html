@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control input-lg text-center" placeholder="New mixtape description" ng-model="formData.description">
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <form>
+      <div class="form-group">
+        <input type="text" class="form-control input-lg text-center" placeholder="Search books..." ng-model="searchTerm">
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" ng-click="searchBook(searchTerm)">Search</button>
+    </form>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Cover</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Category</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="result in search_results">
+          <td><img src="{{result.thumbnail}}"/></td>
+          <td>{{result.title}}</td>
+          <td>{{result.authors[0]}}</td>
+          <td>{{result.categories[0]}}</td>
+          <td><button type="submit" class="btn btn-primary btn-lg" ng-click="chooseBook(result)">Choose book</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<button type="submit" class="btn btn-primary btn-lg" ng-click="saveBook()">Add songs</button>

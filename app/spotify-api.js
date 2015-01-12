@@ -42,7 +42,6 @@ module.exports = function(app, spotifyApi){
   app.get('/spotify/search/:search_term', function(req, res) {
     spotifyApi.searchTracks(req.params.search_term)
       .then(function(data) {
-        console.log('Search by ' + req.params.search_term, data);
         res.json(data);
       }, function(err) {
         console.error(err);
