@@ -1,11 +1,42 @@
 body {
   font-family: "proxima-nova",sans-serif;
   font-weight: 300;
+  background: #f3f3f3;
 }
 #page {
   margin-top: 50px;
 }
 .content {
   margin-right: $sidebar-width;
-  padding: 20px;
+  padding: 30px;
+}
+.content-wide {
+  padding: 30px;
+}
+
+table {
+  margin-top: 20px;
+}
+
+.btn-primary {
+  background: $orange;
+  border-color: $dark-orange;
+  border-radius: 2px;
+  &:hover, &:active, &:focus {
+    background: $dark-orange;
+    border-color: $dark-orange;
+  }
+}
+.form-control {
+  @include box-shadow(none);
+  &:focus {
+    border-color: $orange;
+    @include box-shadow(none);
+  }
+}
+.input-lg {
+  height: 45px!important;
+  border-right: none;
+  border-radius: 2px;
+  border-color: #ddd;
 }

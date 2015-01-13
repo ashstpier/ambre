@@ -40,6 +40,7 @@ passport.use(new SpotifyStrategy({
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function () {
       spotifyApi.setAccessToken(accessToken);
+      spotifyApi.setRefreshToken(refreshToken);
       return done(null, profile);
     });
   }

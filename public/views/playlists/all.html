@@ -1,25 +1,27 @@
-<div class="row">
-  <div class="col-md-12">
-    <ul class="nav nav-pills">
-      <li><a href="" ng-click="predicate = 'createdAt'; reverse=true">Latest</a></li>
-      <li><a href="" ng-click="predicate = 'createdAt'; reverse=false">Oldest</a></li>
-    </ul>
+<div class="content-wide">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-pills">
+        <li><a href="" ng-click="predicate = 'createdAt'; reverse=true">Latest</a></li>
+        <li><a href="" ng-click="predicate = 'createdAt'; reverse=false">Oldest</a></li>
+      </ul>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-6" ng-repeat="playlist in playlists | orderBy:predicate:reverse">
-    <div class="panel panel-default">
-      <div class="panel-heading">{{ playlist.title }} <span class="label label-default">{{ playlist.createdAt | date:'dd MMM yyyy'}}</span></div>
-      <div class="panel-body">
-        <img src="{{ playlist.book.thumbnail }}"/>
-        <h4>{{ playlist.book.title }}</h4>
-        <p><span ng-repeat="author in playlist.book.authors">{{ author }}</span></p>
-        <ol>
-          <li ng-repeat="track in playlist.tracks track by $index">{{ track.name }} - {{ track.artist }}</li>
-        </ol>
-        <p>{{ playlist.author }}</p>
-        <a href="/#/playlist/{{playlist.id}}" class="btn btn-default btn-xs">View</a>
+  <div class="row">
+    <div class="col-md-6" ng-repeat="playlist in playlists | orderBy:predicate:reverse">
+      <div class="panel panel-default">
+        <div class="panel-heading">{{ playlist.title }} <span class="label label-default">{{ playlist.createdAt | date:'dd MMM yyyy'}}</span></div>
+        <div class="panel-body">
+          <img src="{{ playlist.book.thumbnail }}"/>
+          <h4>{{ playlist.book.title }}</h4>
+          <p><span ng-repeat="author in playlist.book.authors">{{ author }}</span></p>
+          <ol>
+            <li ng-repeat="track in playlist.tracks track by $index">{{ track.name }} - {{ track.artist }}</li>
+          </ol>
+          <p>{{ playlist.author }}</p>
+          <a href="/#/playlist/{{playlist.id}}" class="btn btn-default btn-xs">View</a>
+        </div>
       </div>
     </div>
   </div>
