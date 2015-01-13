@@ -1,6 +1,6 @@
 angular.module('chooseBook', [])
-  .controller('chooseBook', function($scope, $location, Book, GoogleBooks, CurrentBook) {
-    $scope.book = {};
+  .controller('chooseBook', function($scope, $location, Book, GoogleBooks, CurrentSoundtrack) {
+    $scope.formData = {};
 
     $scope.searchBook = function(term) {
       GoogleBooks.search(term)
@@ -14,9 +14,16 @@ angular.module('chooseBook', [])
     };
 
     $scope.saveBook = function() {
+      if($scope.formData != null){
+        $scope.soundtrack = {
+          title: $scope.formData.title,
+          description: $scope.formData.description
+        }
+        CurrentSoundtrack.set({book: $scope.book, soundtrack: $scope.soundtrack});
+        $location.path('/new/songs');
+      }
 
-      CurrentBook.set($scope.book);
-      $location.path('/new/songs');
+
     };
 
   });

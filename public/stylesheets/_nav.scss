@@ -1,0 +1,56 @@
+.fa-nav {
+  padding-right: 10px;
+}
+.navbar-default {
+  background-color: $orange;
+  border-color: $dark-orange;
+  .navbar-brand {
+    color: $darker-orange;
+    &:hover, &:focus {
+      background-color: $dark-orange;
+      color: $darker-orange; }}
+  .navbar-text {
+    color: $darker-orange; }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $darker-orange;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        &:hover,  &:focus {
+          background-color: $dark-orange;
+          color: $darker-orange; }}}
+    > .active {
+      > a, > a:hover, > a:focus {
+        background-color: $dark-orange;
+        color: $darker-orange; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        background-color: $dark-orange;
+        color: $darker-orange; }}}
+  .navbar-toggle {
+    border-color: $dark-orange;
+    &:hover, &:focus {
+      background-color: $dark-orange; }
+    .icon-bar {
+      background-color: $darker-orange; }}
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $darker-orange; }
+  .navbar-link {
+    color: $darker-orange;
+    &:hover {
+      color: $dark-orange; }}}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $darker-orange;
+      &:hover, &:focus {
+        color: $dark-orange; }}
+    > .active {
+      > a, > a:hover, > a:focus, {
+        color: $dark-orange;
+        background-color: $dark-orange; }}}
+}

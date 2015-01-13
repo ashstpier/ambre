@@ -1,7 +1,7 @@
 angular.module('addSongs', [])
-  .controller('addSongs', function($scope, $http, $location, Soundtrack, Spotify, CurrentBook) {
-    $scope.tracks = [];
-    $scope.book = CurrentBook.get();
+  .controller('addSongs', function($scope, $http, $location, Soundtrack, Spotify, CurrentSoundtrack) {
+    $scope.playlist = CurrentSoundtrack.get();
+    $scope.playlist.soundtrack.tracks = [];
 
     $scope.searchTrack = function(term) {
       Spotify.search(term)
@@ -11,7 +11,7 @@ angular.module('addSongs', [])
     };
 
     $scope.addTrack = function(track) {
-      if ($scope.tracks.length <= 19) {
+      if ($scope.playlist.soundtrack.tracks.length <= 19) {
         var track = {
           uri: track.uri,
           id: track.id,
@@ -19,16 +19,16 @@ angular.module('addSongs', [])
           artist: track.artists[0].name,
           album: track.album.name
         }
-        $scope.tracks.push(track);
+        $scope.playlist.soundtrack.tracks.push(track);
       }
     };
 
     $scope.saveSoundtrack = function() {
 
-      Soundtrack.create($scope.book, $scope.tracks)
+      Soundtrack.create($scope.playlist.book, $scope.playlist.soundtrack)
         .success(function(data) {
-          CurrentBook.del()
-          $location.path('/new/songs');
+          CurrentSoundtrack.del()
+          $location.path('/user/playlists');
         });
     };
   });

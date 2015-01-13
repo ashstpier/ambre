@@ -1,5 +1,5 @@
 angular.module('main', [])
-  .controller('main', function($scope, $http, Soundtrack, Spotify) {
+  .controller('main', function($scope, $http, Spotify) {
 
     $scope.downloadPlaylist = function(soundtrack) {
       Spotify.download(soundtrack)
@@ -8,10 +8,4 @@ angular.module('main', [])
         });
     };
 
-    $scope.deleteSoundtrack = function(id) {
-      Soundtrack.delete(id)
-        .success(function(data) {
-          $scope.soundtrack = data;
-        });
-    };
   });

@@ -2,11 +2,14 @@ angular.module('services', [])
 
   .factory('Soundtrack', function($http) {
     return {
-      get : function() {
-          return $http.get('/api/soundtracks');
+      getAll : function() {
+          return $http.get('/api/soundtracks', { cache: true});
       },
-      create : function(book, tracks) {
-          return $http.post('/api/soundtracks', {book: book, tracks: tracks});
+      getOne : function(id) {
+          return $http.get('/api/soundtracks/' + id, { cache: true});
+      },
+      create : function(book, soundtrack) {
+          return $http.post('/api/soundtracks', {book: book, soundtrack: soundtrack});
       },
       delete : function(id) {
           return $http.delete('/api/soundtracks/' + id);
@@ -16,7 +19,7 @@ angular.module('services', [])
   .factory('Book', function($http) {
     return {
       get : function() {
-          return $http.get('/api/books');
+          return $http.get('/api/books', { cache: true});
       },
       create : function(bookData) {
           return $http.post('/api/books', bookData);
@@ -26,27 +29,27 @@ angular.module('services', [])
   .factory('User', function($http) {
     return {
       get : function() {
-        return $http.get('/api/user/soundtracks');
+        return $http.get('/api/user/soundtracks', { cache: true});
       }
     }
   })
-  .factory('CurrentBook', function($cookieStore) {
+  .factory('CurrentSoundtrack', function($cookieStore) {
     return {
       set : function(data) {
-        return $cookieStore.put('CurrentBook', data);
+        return $cookieStore.put('CurrentSoundtrack', data);
       },
       get : function() {
-        return $cookieStore.get('CurrentBook');
+        return $cookieStore.get('CurrentSoundtrack', { cache: true});
       },
       del : function() {
-        return $cookieStore.remove('CurrentBook');
+        return $cookieStore.remove('CurrentSoundtrack');
       }
     }
   })
   .factory('Spotify', function($http) {
     return {
       search : function(term) {
-        return $http.get('/spotify/search/' + term);
+        return $http.get('/spotify/search/' + term, { cache: true});
       },
       download : function(soundtrack) {
         return $http.post('/spotify/createplaylist', soundtrack);
@@ -56,7 +59,7 @@ angular.module('services', [])
   .factory('GoogleBooks', function($http) {
     return {
       search : function(term) {
-        return $http.get('/books/' + term);
+        return $http.get('/books/' + term, { cache: true});
       }
     }
   });

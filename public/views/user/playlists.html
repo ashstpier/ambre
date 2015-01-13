@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-md-6" ng-repeat="playlist in playlists | orderBy:predicate:reverse">
+    <div class="panel panel-default">
+      <div class="panel-heading">{{ playlist.book.title }} <span class="label label-default">{{ playlist.createdAt | date:'dd MMM yyyy'}}</span></div>
+      <div class="panel-body">
+        <img src="{{ playlist.book.thumbnail }}"/>
+        <p><span ng-repeat="author in playlist.book.authors">{{ author }}</span></p>
+        <ol>
+          <li ng-repeat="track in playlist.tracks track by $index">{{ track.name }} - {{ track.artist }}</li>
+        </ol>
+        <p>{{ playlist.author }}</p>
+        <a href="/#/playlist/{{playlist.id}}" class="btn btn-default btn-xs">View</a>
+        <button type="button" class="btn btn-primary btn-xs" ng-click="downloadPlaylist(playlist)">Play soundtrack</button>
+        <button type="button" class="btn btn-danger btn-xs" ng-click="deleteSoundtrack(playlist.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

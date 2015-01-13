@@ -1,43 +1,55 @@
-<div class="row">
-  <div class="col-sm-12 text-center">
-    <form>
-      <div class="form-group">
-        <input type="text" class="form-control input-lg text-center" placeholder="New mixtape description" ng-model="formData.description">
-      </div>
-    </form>
+<div class="content">
+  <div class="row">
+    <div class="col-sm-12">
+      <form>
+        <div class="form-group">
+          <input type="text" class="form-control input-lg text-center" placeholder="Search books..." ng-model="searchTerm">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" ng-click="searchBook(searchTerm)">Search</button>
+      </form>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Cover</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Category</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="result in search_results">
+            <td><img src="{{result.thumbnail}}"/></td>
+            <td>{{result.title}}</td>
+            <td>{{result.authors[0]}}</td>
+            <td>{{result.categories[0]}}</td>
+            <td><button type="submit" class="btn btn-primary btn-lg" ng-click="chooseBook(result)">Choose book</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+  <button type="submit" class="btn btn-primary btn-lg" ng-click="saveBook()">Add songs</button>
 </div>
 
-<div class="row">
-  <div class="col-sm-12">
-    <form>
-      <div class="form-group">
-        <input type="text" class="form-control input-lg text-center" placeholder="Search books..." ng-model="searchTerm">
-      </div>
-      <button type="submit" class="btn btn-primary btn-lg" ng-click="searchBook(searchTerm)">Search</button>
-    </form>
-
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Cover</th>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Category</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="result in search_results">
-          <td><img src="{{result.thumbnail}}"/></td>
-          <td>{{result.title}}</td>
-          <td>{{result.authors[0]}}</td>
-          <td>{{result.categories[0]}}</td>
-          <td><button type="submit" class="btn btn-primary btn-lg" ng-click="chooseBook(result)">Choose book</button></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="sidebar">
+  <div class="selected-book" ng-hide="book">
+    <img src="http://dreaminupconcepts.com/img/placeholder-book.jpg" alt="placeholder cover" width="128px"/>
+    <p>Your chosen book will appear here</p>
   </div>
+  <div class="selected-book" ng-show="book">
+    <img src="{{ book.thumbnail }}" alt="{{ book.title }} cover" />
+    <h4 class="media-heading">{{ book.title }}</h4>
+    <p><em ng-repeat="author in book.authors">{{ author }}</em></p>
+    <p>{{ book.publishedDate | date:'MMM yyyy' }}</p>
+  </div>
+  <form ng-show="book">
+    <div class="form-group">
+      <input type="text" class="form-control" placeholder="Title..." ng-model="formData.title">
+    </div>
+    <div class="form-group">
+      <textarea type="text" class="form-control" placeholder="Description..." ng-model="formData.description" rows="3"></textarea>
+    </div>
+  </form>
 </div>
-
-<button type="submit" class="btn btn-primary btn-lg" ng-click="saveBook()">Add songs</button>

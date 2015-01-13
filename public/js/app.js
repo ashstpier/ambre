@@ -1,11 +1,32 @@
-angular.module('ambre', ['chooseBook', 'addSongs', 'userSoundtracks', 'allSoundtracks', 'services', 'main', 'ngRoute', 'ngCookies'])
+angular.module('ambre',
+  [
+    'chooseBook',
+    'addSongs',
+    'userPlaylists',
+    'allPlaylists',
+    'onePlaylist',
+    'services',
+    'main',
+    'ngRoute',
+    'ngCookies'
+  ])
 
   .config(function($routeProvider) {
     $routeProvider
 
       .when('/', {
-        templateUrl : '../views/soundtracks/all.html',
-        controller  : 'allSoundtracks'
+        templateUrl : '../views/playlists/all.html',
+        controller  : 'allPlaylists'
+      })
+
+      .when('/playlist', {
+        templateUrl : '../views/playlists/all.html',
+        controller  : 'allPlaylists'
+      })
+
+      .when('/playlist/:playlist_id', {
+        templateUrl : '../views/playlists/one.html',
+        controller  : 'onePlaylist'
       })
 
       .when('/new/book', {
@@ -18,8 +39,8 @@ angular.module('ambre', ['chooseBook', 'addSongs', 'userSoundtracks', 'allSoundt
         controller  : 'addSongs'
       })
 
-      .when('/user/soundtracks', {
-        templateUrl : '../views/user/soundtracks.html',
-        controller  : 'userSoundtracks'
+      .when('/user/playlists', {
+        templateUrl : '../views/user/playlists.html',
+        controller  : 'userPlaylists'
       })
   });

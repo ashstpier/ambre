@@ -78,7 +78,7 @@ app.set('views', __dirname + '/public');
 
 require('./app/auth-routes')(app, passport);
 require('./app/soundtrack-routes')(app, Soundtrack, Book);
-require('./app/book-routes')(app, Book);
+require('./app/book-routes')(app, Book, Soundtrack);
 require('./app/book-api')(app);
 require('./app/spotify-api')(app, spotifyApi);
 
