@@ -1,0 +1,16 @@
+.form-control {
+  @include box-shadow(none);
+  &:focus {
+    border-color: $orange;
+    @include box-shadow(none);
+  }
+}
+.input-lg {
+  height: 45px!important;
+  border: none;
+  border-radius: 2px;
+  color: $mid-grey;
+}
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+  margin-left: 0;
+}

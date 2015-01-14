@@ -2,34 +2,51 @@
   padding-right: 10px;
 }
 .navbar-default {
-  background-color: $orange;
-  border-color: $dark-orange;
+  background-color: $white;
+  border: none;
   .navbar-brand {
-    color: $darker-orange;
+    color: $white;
+    background-color: $orange;
+    padding-left: 30px;
+    padding-right: 30px;
     &:hover, &:focus {
       background-color: $dark-orange;
-      color: $darker-orange; }}
+      color: $white; }}
   .navbar-text {
     color: $darker-orange; }
   .navbar-nav {
+    &.sidebar-nav {
+      background-color: $blue;
+      width: $sidebar-width;
+      a {
+        color: $light-blue;
+        &:hover,  &:focus {
+          background-color: $dark-blue;
+          color: $light-blue;
+        }
+      }
+      li {
+        float: right;
+      }
+    }
     > li {
       > a {
-        color: $darker-orange;
+        color: $mid-grey;
         padding-left: 20px;
         padding-right: 20px;
-        font-weight: 400;
+        font-weight: 200;
         letter-spacing: 0.05em;
         &:hover,  &:focus {
-          background-color: $dark-orange;
-          color: $darker-orange; }}}
+          background-color: #f3f3f3;
+          color: $mid-grey; }}}
     > .active {
       > a, > a:hover, > a:focus {
-        background-color: $dark-orange;
-        color: $darker-orange; }}
+        background-color: #f3f3f3;
+        color: $mid-grey; }}
     > .open {
       > a, > a:hover, > a:focus {
-        background-color: $dark-orange;
-        color: $darker-orange; }}}
+        background-color: #f3f3f3;
+        color: $mid-grey; }}}
   .navbar-toggle {
     border-color: $dark-orange;
     &:hover, &:focus {

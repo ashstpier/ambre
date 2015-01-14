@@ -1,7 +1,9 @@
 body {
   font-family: "proxima-nova",sans-serif;
   font-weight: 300;
-  background: #f3f3f3;
+  font-size: 13px;
+  background: $grey;
+  color: $mid-grey;
 }
 #page {
   margin-top: 50px;
@@ -16,27 +18,42 @@ body {
 
 table {
   margin-top: 20px;
+  tbody {
+    background: #f6f6f6;
+    tr:nth-child(odd) {
+      background: #eee!important;
+    }
+    th {
+      border: none!important;
+    }
+    td {
+      border: none!important;
+      vertical-align: middle!important;
+      .btn {
+        line-height: 0.9em;
+        padding: 5px;
+      }
+    }
+  }
+}
+.table>thead>tr>th {
+  border: none!important;
+  padding-bottom: 20px;
 }
 
 .btn-primary {
   background: $orange;
-  border-color: $dark-orange;
+  border-color: $orange;
   border-radius: 2px;
   &:hover, &:active, &:focus {
     background: $dark-orange;
     border-color: $dark-orange;
   }
 }
-.form-control {
-  @include box-shadow(none);
-  &:focus {
-    border-color: $orange;
-    @include box-shadow(none);
+
+a {
+  color: $orange;
+  &:hover {
+    color: $dark-orange;
   }
-}
-.input-lg {
-  height: 45px!important;
-  border-right: none;
-  border-radius: 2px;
-  border-color: #ddd;
 }

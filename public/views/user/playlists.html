@@ -5,7 +5,7 @@
         <div class="panel-heading">{{ playlist.book.title }} <span class="label label-default">{{ playlist.createdAt | date:'dd MMM yyyy'}}</span></div>
         <div class="panel-body">
           <img src="{{ playlist.book.thumbnail }}"/>
-          <p><span ng-repeat="author in playlist.book.authors">{{ author }}</span></p>
+          <p>{{ playlist.book.author }}</p>
           <ol>
             <li ng-repeat="track in playlist.tracks track by $index">{{ track.name }} - {{ track.artist }}</li>
           </ol>

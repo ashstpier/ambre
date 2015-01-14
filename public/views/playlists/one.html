@@ -6,7 +6,7 @@
         <div class="panel-body">
           <img src="{{ playlist.book.thumbnail }}"/>
           <h4>{{ playlist.book.title }}</h4>
-          <p><span ng-repeat="author in playlist.book.authors">{{ author }}</span></p>
+          <p>{{ playlist.book.author }}</p>
           <ol>
             <li ng-repeat="track in playlist.tracks track by $index">{{ track.name }} - {{ track.artist }}</li>
           </ol>

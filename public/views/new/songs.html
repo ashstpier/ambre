@@ -1,31 +1,19 @@
-<div class="content">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">{{ playlist.book.title }}</div>
-        <div class="panel-body">
-          <img src="{{ playlist.book.thumbnail }}"/>
-          <p><span ng-repeat="author in playlist.book.authors">{{ author }}</span></p>
-          <ul>
-            <li ng-repeat="track in playlist.soundtrack.tracks">{{ track.name }} - {{ track.artist }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
+<div class="content addsongs">
   <div class="row">
     <div class="col-sm-12">
       <form>
-        <div class="form-group">
-          <input type="text" class="form-control input-lg text-center" placeholder="Search tracks..." ng-model="searchTerm">
+        <div class="input-group">
+          <input type="text" class="form-control input-lg" placeholder="Search tracks..." ng-model="searchTerm">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="searchTrack(searchTerm)"><i class="fa fa-search"></i></button>
+          </span>
         </div>
-        <button type="submit" class="btn btn-primary btn-lg" ng-click="searchTrack(searchTerm)">Search</button>
       </form>
 
-      <table class="table table-striped">
+      <table class="table table-striped" ng-show="search_results">
         <thead>
           <tr>
+            <th></th>
             <th>Track</th>
             <th>Artist</th>
             <th>Album</th>
@@ -34,14 +22,40 @@
         </thead>
         <tbody>
           <tr ng-repeat="result in search_results">
+            <td><img src="{{result.album.images[2].url}}" width="32px"></td>
             <td>{{result.name}}</td>
             <td>{{result.artists[0].name}}</td>
             <td>{{result.album.name}}</td>
-            <td><button type="submit" class="btn btn-primary" ng-click="addTrack(result)">Add</button></td>
+            <td class="text-right">
+              <button type="submit" class="btn btn-primary btn-sm" ng-click="addTrack(result)"><i class="fa fa-plus fa-fw"></i></button>
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <button type="submit" class="btn btn-primary btn-lg" ng-click="saveSoundtrack()">Save soundtrack</button>
+  </div>
+</div>
+
+<div class="sidebar">
+  <div class="sidebar-content">
+    <div class="chosen-book">
+      <div class="media">
+        <div class="media-left">
+          <img src="{{ playlist.book.thumbnail }}"/>
+        </div>
+        <div class="media-body">
+          <h3>{{ playlist.book.title }}</h3>
+          <p><em>{{ playlist.book.author }}</em></p>
+        </div>
+      </div>
+      <h4>{{ playlist.soundtrack.title }}</h4>
+      <p>{{ playlist.soundtrack.description | cut:true:140:' ...' }}</p>
+      <h4>Tracks</h4>
+      <p ng-hide="playlist.soundtrack.tracks.length > 0">Your tracks will appear here</p>
+      <ul class="songs">
+        <li ng-repeat="track in playlist.soundtrack.tracks">{{ track.name }} <br/><span>{{ track.artist }}</span></li>
+      </ul>
+    </div>
+    <button ng-show="playlist.soundtrack.tracks.length > 0" type="submit" class="btn btn-primary btn-block" ng-click="saveSoundtrack()">Save soundtrack</button>
   </div>
 </div>

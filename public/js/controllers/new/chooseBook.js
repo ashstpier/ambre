@@ -10,7 +10,13 @@ angular.module('chooseBook', [])
     };
 
     $scope.chooseBook = function(book) {
-      $scope.book = book;
+      $scope.book = {
+        id : book.id[0]._,
+        title : book.best_book[0].title[0],
+        author : book.best_book[0].author[0].name[0],
+        thumbnail : book.best_book[0].image_url[0]
+      }
+      console.log($scope.book)
     };
 
     $scope.saveBook = function() {

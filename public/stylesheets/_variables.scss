@@ -1,13 +1,18 @@
 ///// COLOURS /////
 
-$orange: #F7935D;
+$orange: #f08757;
 $dark-orange: desaturate(darken($orange, 5%), 10%);
 $darker-orange: desaturate(darken($orange, 30%), 40%);
 $white: #ffffff;
+$grey: #F8F8F6;
+$mid-grey: #888;
+$blue: lighten(#3D4450, 10%);
+$dark-blue: darken($blue, 3%);
+$light-blue: desaturate(lighten($blue, 30%), 10%);
 $brown: #504043;
 $light-brown: #C1A6AA;
 $dark-brown: darken(#504043, 5%);
 
 ///// MEASUREMENTS /////
 
-$sidebar-width: 340px;
+$sidebar-width: 300px;

@@ -18,8 +18,7 @@ module.exports = function(app, Book){
     Book.create({
         id : req.body.id,
         title : req.body.title,
-        authors : req.body.authors,
-        publisher : req.body.publisher,
+        author : req.body.author,
         thumbnail : req.body.thumbnail
       })
       .complete(function(err, books) {
