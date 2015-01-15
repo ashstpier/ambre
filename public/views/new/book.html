@@ -12,7 +12,7 @@
 
       <div ng-show="search_results">
         <ul class="booklist">
-          <li ng-repeat="result in search_results" ng-click="chooseBook(result)" class="book">
+          <li ng-repeat="result in search_results track by $index" ng-click="chooseBook(result)" class="book">
             <div class="thumb">
               <img src="{{result.best_book[0].image_url[0]}}"/>
             </div>

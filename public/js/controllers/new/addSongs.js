@@ -17,7 +17,8 @@ angular.module('addSongs', [])
           id: track.id,
           name: track.name,
           artist: track.artists[0].name,
-          album: track.album.name
+          album: track.album.name,
+          cover: track.album.images[2].url || track.album.images[1].url || track.album.images[0].url
         }
         $scope.playlist.soundtrack.tracks.push(track);
       }

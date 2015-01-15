@@ -14,7 +14,7 @@ gr = new goodreads.client({ 'key': 'WHw2vF1QeKx5EfoOx8Lw', 'secret': 'jkGBYlbDnj
 module.exports = function(app){
 
   app.get('/books/:search_term', function(req, res) {
-    gr.search(req.params.search_term, function(json) {
+    gr.search(req.params.search_term, 1, function(json) {
       if (json) {
         res.json(json.GoodreadsResponse.search[0].results[0].work);
       }
