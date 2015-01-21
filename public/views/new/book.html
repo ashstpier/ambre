@@ -14,14 +14,28 @@
         <ul class="booklist">
           <li ng-repeat="result in search_results track by $index" ng-click="chooseBook(result)" class="book">
             <div class="thumb">
+              <img src="{{result.thumbnail}}"/>
+            </div>
+            <h3>{{result.title}}</h3>
+            <p><em>{{result.authors[0]}}</em></p>
+            <p ng-repeat="category in result.categories"><a href="">{{category}}</a></p>
+          </li>
+        </ul>
+      </div>
+
+      <p class="search-message" ng-hide="search_results">No books to display. Please use the search bar above.</p>
+
+      <!-- <div ng-show="search_results">
+        <ul class="booklist">
+          <li ng-repeat="result in search_results track by $index" ng-click="chooseBook(result)" class="book">
+            <div class="thumb">
               <img src="{{result.best_book[0].image_url[0]}}"/>
             </div>
             <h3>{{result.best_book[0].title[0]}}</h3>
             <p><em>{{result.best_book[0].author[0].name[0]}}</em></p>
-            <!-- <p ng-repeat="category in result.categories"><a href="">{{category}}</a></p> -->
           </li>
         </ul>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

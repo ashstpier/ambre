@@ -1,7 +1,7 @@
 module.exports = function(app, Soundtrack, Book){
 
   app.get('/api/soundtracks', function(req, res) {
-    Soundtrack.findAll({include: [ Book ]})
+    Soundtrack.findAll({include: [ Book ], limit: 20})
       .complete(function(err, soundtracks) {
         if (!!err) {
           console.log('An error occurred:', err)
@@ -36,7 +36,7 @@ module.exports = function(app, Soundtrack, Book){
       where: { id: book.id },
       defaults: {
         title : book.title,
-        authors : book.authors,
+        author : book.author,
         publisher : book.publisher,
         thumbnail : book.thumbnail
       }

@@ -9,20 +9,39 @@
   </div>
 
   <div class="row">
-    <div class="col-md-6" ng-repeat="playlist in playlists | orderBy:predicate:reverse">
-      <div class="panel panel-default">
-        <div class="panel-heading">{{ playlist.title }} <span class="label label-default">{{ playlist.createdAt | date:'dd MMM yyyy'}}</span></div>
-        <div class="panel-body">
-          <img src="{{ playlist.book.thumbnail }}"/>
-          <h4>{{ playlist.book.title }}</h4>
-          <p>{{ playlist.book.author }}</p>
-          <ol>
-            <li ng-repeat="track in playlist.tracks track by $index">{{ track.name }} - {{ track.artist }}</li>
-          </ol>
-          <p>{{ playlist.author }}</p>
-          <a href="/#/playlist/{{playlist.id}}" class="btn btn-default btn-xs">View</a>
-        </div>
-      </div>
+    <div class="col-md-12">
+      <ul class="booklist">
+        <li ng-repeat="playlist in playlists | orderBy:predicate:reverse" class="book">
+          <a href="/#/playlist/{{playlist.id}}">
+            <div class="thumb">
+              <img src="{{ playlist.book.thumbnail }}"/>
+            </div>
+            <h3>{{playlist.title}}</h3>
+            <p><em>{{playlist.book.title}}</em></p>
+          </a>
+        </li>
+      </ul>
+
     </div>
+  </div>
+</div>
+
+<div class="sidebar">
+  <div class="sidebar-content">
+    <h2>Latest playlists</h2>
+    <ul class="latest-playlists">
+      <li ng-repeat="playlist in playlists | orderBy:predicate:reverse">
+        <a href="/#/playlist/{{playlist.id}}">
+          <div class="media">
+            <div class="media-left">
+              <img src="{{ playlist.book.thumbnail }}"/>
+            </div>
+            <div class="media-body">
+              <h3>{{ playlist.title }}</h3>
+              <p><em>{{ playlist.book.title }}</em></p>
+            </div>
+          </div>
+        </li>
+      </ul>
   </div>
 </div>

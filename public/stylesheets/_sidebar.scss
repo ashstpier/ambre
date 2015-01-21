@@ -11,6 +11,37 @@
   .sidebar-content {
     padding: 20px;
     border-top: 1px solid $dark-blue;
+
+    h2 {
+      font-size: 1.2em;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .latest-playlists {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li {
+        margin-bottom: 20px;
+        .media-left {
+          width: 50px;
+        }
+        a {
+          color: $light-blue;
+        }
+        h3 {
+          margin-top: 0;
+          margin-bottom: 2px;
+          font-size: 1em;
+          color: #fff;
+        }
+        img {
+          width: 50px;
+        }
+      }
+    }
+
     .selected-book {
       min-height: 250px;
       text-align: center;
@@ -36,7 +67,7 @@
       .media-left {
         width: 60px;
         img {
-          height: 70px;
+          height: 100px;
           @include box-shadow(0px 2px 3px rgba(0,0,0,0.3));
         }
       }

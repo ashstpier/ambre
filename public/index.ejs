@@ -51,14 +51,12 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right sidebar-nav">
-          <li class="pull-left"><a href="/#/user/playlists"><i class="fa fa-user fa-fw fa-nav"></i> <%= user.username %></a></li>
-          <li class="pull-right"><a href="/logout"><i class="fa fa-power-off"></i></a></li>
-          <li class="pull-right"><a href="/#/"><i class="fa fa-cog"></i></a></li>
+          <li class="pull-left"><a href="/#/user/playlists"><i class="fa fa-music fa-fw fa-nav"></i> My playlists</a></li>
+          <li class="pull-right"><a href="/logout"><i class="fa fa-power-off fa-fw fa-nav"></i> Logout</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
 <!--           <li><a href="/#/"><i class="fa fa-search fa-fw fa-nav"></i> Browse</a></li> -->
           <li ng-class="isActive('/new/book')"><a href="/#/new/book"><i class="fa fa-plus fa-fw fa-nav"></i> New</a></li>
-          <li ng-class="isActive('/user/playlists')"><a href="/#/user/playlists"><i class="fa fa-music fa-fw fa-nav"></i> My playlists</a></li>
         </ul>
       </div>
     </div>

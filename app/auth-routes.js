@@ -14,7 +14,7 @@ module.exports = function(app, passport){
   });
 
   app.get('/authenticate',
-    passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private', 'playlist-modify']}),
+    passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private', 'playlist-modify', 'user-library-read']}),
     function(req, res){});
 
   app.get('/callback',

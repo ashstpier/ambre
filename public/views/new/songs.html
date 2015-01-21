@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="result in search_results">
+          <tr ng-repeat="result in search_results track by $index">
             <td><img src="{{result.album.images[2].url}}" width="32px"></td>
             <td>{{result.name}}</td>
             <td>{{result.artists[0].name}}</td>
@@ -32,6 +32,9 @@
           </tr>
         </tbody>
       </table>
+
+      <p class="search-message" ng-hide="search_results">No songs in your Spotify library. Please use the search bar above.</p>
+
     </div>
   </div>
 </div>

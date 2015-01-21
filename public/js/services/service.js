@@ -51,6 +51,9 @@ angular.module('services', [])
       search : function(term) {
         return $http.get('/spotify/search/' + term, { cache: true});
       },
+      library : function() {
+        return $http.get('/spotify/library', { cache: true});
+      },
       download : function(soundtrack) {
         return $http.post('/spotify/createplaylist', soundtrack);
       }

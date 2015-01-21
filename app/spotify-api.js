@@ -47,4 +47,16 @@ module.exports = function(app, spotifyApi){
         console.error(err);
       });
   });
+
+  app.get('/spotify/library', function(req, res) {
+    spotifyApi.getMySavedTracks({
+      limit : 20
+    })
+    .then(function(data) {
+      console.log(data)
+      res.json(data);
+    }, function(err) {
+      console.log('Something went wrong!', err);
+    });
+  });
 }

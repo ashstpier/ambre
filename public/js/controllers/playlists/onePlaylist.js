@@ -9,7 +9,6 @@ angular.module('onePlaylist', [])
         }
         $scope.playlist = data;
         $scope.playlist_url = $sce.trustAsResourceUrl('https://embed.spotify.com/?uri=spotify:trackset:title:' + track_ids.toString());
-        console.log($scope.playlist_url)
       });
 
   });

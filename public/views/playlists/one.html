@@ -8,11 +8,6 @@
           <h4>{{ playlist.book.title }}</h4>
           <p>{{ playlist.book.author }}</p>
           <iframe src="{{playlist_url}}" frameborder="0" allowtransparency="true" style="min-height: 400px" width="300"></iframe>
-          <ol>
-            <li ng-repeat="track in playlist.tracks track by $index">
-              <img src="{{ track.cover }}" width="32px"> - {{ track.name }} - {{ track.artist }}
-            </li>
-          </ol>
           <p>{{ playlist.author }}</p>
           <button type="button" class="btn btn-primary btn-xs" ng-click="downloadPlaylist(playlist)">Download soundtrack</button>
         </div>
