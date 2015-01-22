@@ -1,17 +1,14 @@
-.fa-nav {
-  padding-right: 10px;
-}
 .navbar-default {
   background-color: $white;
   border: none;
+  height: 50px;
   .navbar-brand {
-    color: $white;
-    background-color: $orange;
-    padding-left: 30px;
-    padding-right: 30px;
+    color: $orange;
+    padding-left: 20px;
+    padding-right: 20px;
+    @include transition(color 200ms);
     &:hover, &:focus {
-      background-color: $dark-orange;
-      color: $white; }}
+      color: $dark-orange; }}
   .navbar-text {
     color: $darker-orange; }
   .navbar-nav {
@@ -55,7 +52,25 @@
       background-color: $darker-orange; }}
   .navbar-collapse,
   .navbar-form {
-    border-color: $darker-orange; }
+    border-color: $darker-orange;
+    .input-group {
+      border-bottom: 1px solid #eee;
+    }
+    .form-control {
+      width: 400px;
+      border: none;
+      background-color: transparent;
+      border-radius: 0;
+    }
+    .input-group-btn {
+      .btn {
+        border: none;
+        background-color: transparent;
+        border-radius: 0;
+        color: $mid-grey;
+      }
+    }
+  }
   .navbar-link {
     color: $darker-orange;
     &:hover {

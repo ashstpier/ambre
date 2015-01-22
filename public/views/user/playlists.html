@@ -10,7 +10,7 @@
             <li ng-repeat="track in playlist.tracks track by $index">{{ track.name }} - {{ track.artist }}</li>
           </ol>
           <p>{{ playlist.author }}</p>
-          <a href="/#/playlist/{{playlist.id}}" class="btn btn-default btn-xs">View</a>
+          <a href="/#/playlists/{{playlist.id}}" class="btn btn-default btn-xs">View</a>
           <button type="button" class="btn btn-danger btn-xs" ng-click="deleteSoundtrack(playlist.id)">Delete</button>
         </div>
       </div>

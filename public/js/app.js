@@ -4,6 +4,7 @@ angular.module('ambre',
     'addSongs',
     'userPlaylists',
     'allPlaylists',
+    'books',
     'onePlaylist',
     'services',
     'main',
@@ -19,24 +20,19 @@ angular.module('ambre',
         controller  : 'allPlaylists'
       })
 
-      .when('/playlist', {
-        templateUrl : '../views/playlists/all.html',
-        controller  : 'allPlaylists'
+      .when('/playlists/new', {
+        templateUrl : '../views/new/songs.html',
+        controller  : 'addSongs'
       })
 
-      .when('/playlist/:playlist_id', {
+      .when('/playlists/:playlist_id', {
         templateUrl : '../views/playlists/one.html',
         controller  : 'onePlaylist'
       })
 
-      .when('/new/book', {
-        templateUrl : '../views/new/book.html',
-        controller  : 'chooseBook'
-      })
-
-      .when('/new/songs', {
-        templateUrl : '../views/new/songs.html',
-        controller  : 'addSongs'
+      .when('/books/:search_term', {
+        templateUrl : '../views/search/books.html',
+        controller  : 'books'
       })
 
       .when('/user/playlists', {
@@ -62,4 +58,4 @@ angular.module('ambre',
 
       return value + (tail || ' …');
     };
-    });
+  });

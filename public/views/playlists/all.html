@@ -1,47 +1,34 @@
-<div class="content">
-  <div class="row">
-    <div class="col-md-12">
-      <ul class="nav nav-pills">
-        <li><a href="" ng-click="predicate = 'createdAt'; reverse=true">Latest</a></li>
-        <li><a href="" ng-click="predicate = 'createdAt'; reverse=false">Oldest</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <ul class="booklist">
-        <li ng-repeat="playlist in playlists | orderBy:predicate:reverse" class="book">
-          <a href="/#/playlist/{{playlist.id}}">
-            <div class="thumb">
-              <img src="{{ playlist.book.thumbnail }}"/>
-            </div>
-            <h3>{{playlist.title}}</h3>
-            <p><em>{{playlist.book.title}}</em></p>
-          </a>
-        </li>
-      </ul>
-
+<div class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Experience a book like never before...</h1>
+      </div>
     </div>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
 
-<div class="sidebar">
-  <div class="sidebar-content">
-    <h2>Latest playlists</h2>
-    <ul class="latest-playlists">
-      <li ng-repeat="playlist in playlists | orderBy:predicate:reverse">
-        <a href="/#/playlist/{{playlist.id}}">
-          <div class="media">
-            <div class="media-left">
-              <img src="{{ playlist.book.thumbnail }}"/>
+      <h2>Latest playlists</h2>
+      <ul class="booklist clearfix">
+        <li ng-repeat="playlist in playlists | orderBy:predicate:reverse" class="col-lg-2 col-sm-3 col-xs-4">
+
+          <div class="book">
+            <div class="thumb">
+              <a href="/#/playlists/{{playlist.id}}">
+                <img src="{{playlist.book.thumbnail}}"/>
+              </a>
             </div>
-            <div class="media-body">
-              <h3>{{ playlist.title }}</h3>
-              <p><em>{{ playlist.book.title }}</em></p>
+            <div class="book-content">
+              <h3>{{playlist.title}}</h3>
+              <p><a href="#">{{playlist.author}}</a></p>
             </div>
           </div>
+
         </li>
       </ul>
+    </div>
   </div>
 </div>

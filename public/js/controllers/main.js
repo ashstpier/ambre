@@ -16,4 +16,10 @@ angular.module('main', [])
       }
     }
 
+    $scope.submit = function() {
+      if ($scope.search) {
+        $location.path('/books/' + $scope.search);
+      }
+    };
+
   });

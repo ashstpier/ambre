@@ -4,8 +4,8 @@ html {
 body {
   font-family: "proxima-nova",sans-serif;
   font-weight: 300;
-  font-size: 13px;
-  background: $grey;
+  font-size: 14px;
+  background: #F3F2F2;
   color: $mid-grey;
 }
 #page {
@@ -15,8 +15,21 @@ body {
   margin-right: $sidebar-width;
   padding: 30px;
 }
-.content-wide {
-  padding: 30px;
+.header {
+  background: $orange;
+  padding: 100px 0;
+  margin-bottom: 30px;
+  h1 {
+    color: #fff;
+    letter-spacing: 0.05em;
+    font-weight: 200;
+  }
+}
+
+h2 {
+  color: #aaa;
+  font-weight: 200;
+  letter-spacing: 0.1em;
 }
 
 table {

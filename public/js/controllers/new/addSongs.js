@@ -3,16 +3,16 @@ angular.module('addSongs', [])
     $scope.playlist = CurrentSoundtrack.get();
     $scope.playlist.soundtrack.tracks = [];
 
-    // Spotify.library()
-    //   .success(function(data) {
+    Spotify.library()
+      .success(function(data) {
 
-    //     var results = []
-    //     for(item of data.items){
-    //       results.push(item.track)
-    //     }
-    //     $scope.search_results = results;
-    //     console.log(results)
-    //   });
+        var results = []
+        for(item of data.items){
+          results.push(item.track)
+        }
+        $scope.search_results = results;
+        console.log(results)
+      });
 
     $scope.searchTrack = function(term) {
       Spotify.search(term)
