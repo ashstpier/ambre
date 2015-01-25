@@ -13,7 +13,7 @@
 
       <h2>Latest playlists</h2>
       <ul class="booklist clearfix">
-        <li ng-repeat="playlist in playlists | orderBy:predicate:reverse" class="col-lg-2 col-sm-3 col-xs-4">
+        <li ng-repeat="playlist in playlists | orderBy:createdAt:false" class="col-lg-3 col-sm-4 col-xs-6">
 
           <div class="book">
             <div class="thumb">
@@ -22,7 +22,8 @@
               </a>
             </div>
             <div class="book-content">
-              <h3>{{playlist.title}}</h3>
+              <h3>{{playlist.title | cut:false:35:'...'}}</h3>
+              <p>{{playlist.genre}}</p>
               <p><a href="#">{{playlist.author}}</a></p>
             </div>
           </div>

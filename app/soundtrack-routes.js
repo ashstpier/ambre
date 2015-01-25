@@ -45,6 +45,7 @@ module.exports = function(app, Soundtrack, Book){
       Soundtrack.create({
           title: soundtrack.title,
           description: soundtrack.description,
+          genre: soundtrack.genre,
           author : req.user.username,
           tracks : soundtrack.tracks
         })

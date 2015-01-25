@@ -1,14 +1,17 @@
 .navbar-default {
-  background-color: $white;
+  background-color: $orange;
   border: none;
-  height: 50px;
+  height: 60px;
+  padding: 5px;
   .navbar-brand {
-    color: $orange;
+    color: $white;
+    font-family: "grafolita-script",sans-serif;
+    font-size: 1.7em;
     padding-left: 20px;
     padding-right: 20px;
     @include transition(color 200ms);
     &:hover, &:focus {
-      color: $dark-orange; }}
+      color: lighten($orange, 25%); }}
   .navbar-text {
     color: $darker-orange; }
   .navbar-nav {
@@ -28,22 +31,19 @@
     }
     > li {
       > a {
-        color: $mid-grey;
+        color: $white;
         padding-left: 20px;
         padding-right: 20px;
         font-weight: 200;
         letter-spacing: 0.05em;
         &:hover,  &:focus {
-          background-color: #f3f3f3;
-          color: $mid-grey; }}}
+          color: lighten($orange, 25%); }}}
     > .active {
       > a, > a:hover, > a:focus {
-        background-color: #f3f3f3;
-        color: $mid-grey; }}
+        color: lighten($orange, 25%); }}
     > .open {
       > a, > a:hover, > a:focus {
-        background-color: #f3f3f3;
-        color: $mid-grey; }}}
+        color: lighten($orange, 25%); }}}
   .navbar-toggle {
     border-color: $dark-orange;
     &:hover, &:focus {
@@ -53,21 +53,35 @@
   .navbar-collapse,
   .navbar-form {
     border-color: $darker-orange;
+    margin: 5px 0;
     .input-group {
-      border-bottom: 1px solid #eee;
+      background-color: $dark-orange;
     }
     .form-control {
       width: 400px;
       border: none;
       background-color: transparent;
       border-radius: 0;
+      color: $white;
+      padding: 20px 10px;
+      @include input-placeholder {
+        color: lighten($orange, 25%);
+      }
+      &:focus {
+        @include input-placeholder {
+          color: $white;
+        }
+      }
     }
     .input-group-btn {
       .btn {
         border: none;
         background-color: transparent;
         border-radius: 0;
-        color: $mid-grey;
+        color: lighten($orange, 25%);
+        &:hover {
+          color: $white;
+        }
       }
     }
   }

@@ -9,16 +9,16 @@ body {
   color: $mid-grey;
 }
 #page {
-  margin-top: 50px;
+  margin-top: 60px;
 }
 .content {
   margin-right: $sidebar-width;
   padding: 30px;
 }
 .header {
-  background: $orange;
+  background: $blue;
   padding: 100px 0;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   h1 {
     color: #fff;
     letter-spacing: 0.05em;
@@ -29,7 +29,9 @@ body {
 h2 {
   color: #aaa;
   font-weight: 200;
-  letter-spacing: 0.1em;
+  font-size: 1.8em;
+  letter-spacing: 0.05em;
+  margin-top: 40px;
 }
 
 table {
@@ -57,13 +59,27 @@ table {
   padding-bottom: 20px;
 }
 
+.btn {
+  &:hover, &:active, &:focus, &:active:focus {
+    outline: 0;
+    @include box-shadow(none);
+  }
+}
 .btn-primary {
   background: $orange;
   border-color: $orange;
   border-radius: 2px;
-  &:hover, &:active, &:focus {
+  &:hover, &:active, &:focus, &:active:focus {
     background: $dark-orange;
     border-color: $dark-orange;
+  }
+  &.disabled {
+    background: lighten($orange, 15%);
+    border-color: lighten($orange, 15%);
+    &:hover {
+      background: lighten($orange, 15%);
+      border-color: lighten($orange, 15%);
+    }
   }
 }
 
@@ -72,4 +88,15 @@ a {
   &:hover {
     color: $dark-orange;
   }
+}
+
+.modal-header {
+  background: $orange;
+  color: #fff;
+  h4 {
+    font-size: 1.1em;
+  }
+}
+.modal-footer {
+  background: #eee;
 }

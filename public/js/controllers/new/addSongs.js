@@ -11,7 +11,6 @@ angular.module('addSongs', [])
           results.push(item.track)
         }
         $scope.search_results = results;
-        console.log(results)
       });
 
     $scope.searchTrack = function(term) {
@@ -33,6 +32,10 @@ angular.module('addSongs', [])
         }
         $scope.playlist.soundtrack.tracks.push(track);
       }
+    };
+
+    $scope.removeTrack = function(index) {
+      $scope.playlist.soundtrack.tracks.splice(index, 1);
     };
 
     $scope.saveSoundtrack = function() {

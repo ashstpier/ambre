@@ -1,6 +1,5 @@
 angular.module('ambre',
   [
-    'chooseBook',
     'addSongs',
     'userPlaylists',
     'allPlaylists',
@@ -20,8 +19,8 @@ angular.module('ambre',
         controller  : 'allPlaylists'
       })
 
-      .when('/playlists/new', {
-        templateUrl : '../views/new/songs.html',
+      .when('/songs', {
+        templateUrl : '../views/search/songs.html',
         controller  : 'addSongs'
       })
 
@@ -56,6 +55,6 @@ angular.module('ambre',
           }
       }
 
-      return value + (tail || ' …');
+      return value.trim() + (tail || ' …');
     };
   });

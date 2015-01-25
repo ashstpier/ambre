@@ -3,10 +3,10 @@ angular.module('services', [])
   .factory('Soundtrack', function($http) {
     return {
       getAll : function() {
-          return $http.get('/api/soundtracks', { cache: true});
+          return $http.get('/api/soundtracks');
       },
       getOne : function(id) {
-          return $http.get('/api/soundtracks/' + id, { cache: true});
+          return $http.get('/api/soundtracks/' + id);
       },
       create : function(book, soundtrack) {
           return $http.post('/api/soundtracks', {book: book, soundtrack: soundtrack});
@@ -19,7 +19,7 @@ angular.module('services', [])
   .factory('Book', function($http) {
     return {
       get : function() {
-          return $http.get('/api/books', { cache: true});
+          return $http.get('/api/books');
       },
       create : function(bookData) {
           return $http.post('/api/books', bookData);
@@ -29,7 +29,7 @@ angular.module('services', [])
   .factory('User', function($http) {
     return {
       get : function() {
-        return $http.get('/api/user/soundtracks', { cache: true});
+        return $http.get('/api/user/soundtracks');
       }
     }
   })
@@ -39,7 +39,7 @@ angular.module('services', [])
         return $cookieStore.put('CurrentSoundtrack', data);
       },
       get : function() {
-        return $cookieStore.get('CurrentSoundtrack', { cache: true});
+        return $cookieStore.get('CurrentSoundtrack');
       },
       del : function() {
         return $cookieStore.remove('CurrentSoundtrack');
@@ -49,10 +49,10 @@ angular.module('services', [])
   .factory('Spotify', function($http) {
     return {
       search : function(term) {
-        return $http.get('/spotify/search/' + term, { cache: true});
+        return $http.get('/spotify/search/' + term);
       },
       library : function() {
-        return $http.get('/spotify/library', { cache: true});
+        return $http.get('/spotify/library');
       },
       download : function(soundtrack) {
         return $http.post('/spotify/createplaylist', soundtrack);
@@ -62,7 +62,7 @@ angular.module('services', [])
   .factory('GoogleBooks', function($http) {
     return {
       search : function(term) {
-        return $http.get('/books/' + term, { cache: true});
+        return $http.get('/books/' + term);
       }
     }
   });
