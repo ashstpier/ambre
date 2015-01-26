@@ -1,141 +1,84 @@
 .sidebar {
-  padding-top: 60px;
-  width: $sidebar-width;
   height: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  background: $blue;
-  color: $white;
+  color: $mid-grey;
   overflow: auto;
-  .sidebar-content {
-    padding: 20px;
-    border-top: 1px solid $dark-blue;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  h2 {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
 
-    h2 {
-      font-size: 1.2em;
-      margin-top: 0;
-      margin-bottom: 20px;
+  .remove-song {
+    float: right;
+    color: $light-blue;
+    background: transparent;
+  }
+
+  .chosen-book {
+    color: $light-blue;
+    margin-bottom: 20px;
+    .media {
+      background: lighten(#61595A, 25%) url('../images/dark-wood.png');
+      padding: 10px;
     }
-
-    .latest-playlists {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      li {
-        margin-bottom: 20px;
-        .media-left {
-          width: 50px;
-        }
-        a {
-          color: $light-blue;
-        }
-        h3 {
-          margin-top: 0;
-          margin-bottom: 2px;
-          font-size: 1em;
-          color: #fff;
-        }
-        img {
-          width: 50px;
-        }
-      }
-    }
-
-    .selected-book {
-      min-height: 250px;
-      text-align: center;
-      color: $light-blue;
-      margin-bottom: 20px;
-      h4 {
-        font-weight: 300;
-        color: $white;
-        font-size: 1.1em;
-      }
-      p {
-        margin: 0;
-      }
+    .media-left {
+      width: 60px;
       img {
-        display: inline-block;
-        @include box-shadow(0px 2px 5px rgba(0,0,0,0.3));
-        margin: 20px 0;
+        height: 100px;
+        @include box-shadow(0px 2px 3px rgba(0,0,0,0.3));
       }
     }
-    .chosen-book {
-      color: $light-blue;
+    .playlist-info {
+      border-bottom: 1px solid #e6e6e6;
+      padding: 10px;
       margin-bottom: 20px;
-      .media-left {
-        width: 60px;
-        img {
-          height: 100px;
-          @include box-shadow(0px 2px 3px rgba(0,0,0,0.3));
-        }
-      }
-      h3 {
-        font-size: 1.2em;
-        margin: 5px 0;
-        line-height: 1.2em;
-        color: $white;
-      }
-      h4 {
-        border-top: 1px solid $dark-blue;
-        padding-top: 20px;
-        margin-top: 20px;
-        font-weight: 300;
-        color: $white;
-        font-size: 1.2em;
-      }
-      p {
-        margin: 0;
-      }
-      .songs {
-        padding-left: 0;
-        font-weight: 400;
-        li {
-          padding-bottom: 8px;
-          color: $orange;
-          list-style-type: none;
-        }
-        span {
-          font-weight: 200;
-          color: $light-blue
-        }
-      }
+      background: #fff;
     }
-    input, textarea {
-      border-radius: 2px;
-      border: 0;
-      @include box-shadow(none);
-      background: $dark-blue;
-      border: none;
-      color: $white;
-      @include input-placeholder {
-        color: $white;
-      }
+    h3 {
+      font-size: 1em;
+      margin: 2px 0;
+      line-height: 1.2em;
     }
-    label {
-      font-weight: 200;
-      color: $light-blue;
+    h4 {
+      font-weight: 400;
+      font-size: 1.1em;
+    }
+    .songs {
+      padding-left: 0;
+      font-weight: 400;
       font-size: 0.9em;
-      padding-bottom: 5px;
-    }
-    .book-placeholder {
-      width: 100%;
-      height: 220px;
-      border: 3px dashed $light-blue;
-      margin-bottom: 20px;
-      display: table;
-      text-align: center;
-      .placeholder-text {
-        display: table-cell;
-        vertical-align: middle;
-        padding: 30%;
+      margin-bottom: 15px;
+      li {
+        padding-bottom: 8px;
+        color: $orange;
+        list-style-type: none;
       }
-      h3 {
-        font-size: 1em;
-        color: $light-blue;
-        line-height: 1.5em;
+      span {
+        font-weight: 200;
+        color: $light-blue
       }
     }
+  }
+  input, textarea {
+    border-radius: 2px;
+    border: 0;
+    @include box-shadow(none);
+    background: $dark-blue;
+    border: none;
+    color: $white;
+    @include input-placeholder {
+      color: $white;
+    }
+  }
+  label {
+    font-weight: 200;
+    color: $light-blue;
+    font-size: 0.9em;
+    padding-bottom: 5px;
+  }
+  .label-default {
+    background: $blue;
   }
 }

@@ -15,8 +15,7 @@
   border-bottom: 2px solid #e8e8e8;
   position: relative;
   .thumb {
-    background: desaturate(lighten($blue,50%),5%);
-    @include background-image(linear-gradient(to bottom center, desaturate(lighten($blue,55%),5%), desaturate(lighten($blue,50%),5%)));
+    background: lighten(#61595A, 25%) url('../images/dark-wood.png');
     overflow: hidden;
     &.thumb-padding {
       padding: 20px;
@@ -38,7 +37,7 @@
     }
     img {
       height: 160px;
-      @include box-shadow(0px 2px 5px rgba(0,0,0,0.5));
+      @include box-shadow(0px 3px 20px 2px rgba(0,0,0,0.5));
     }
   }
   .book-content {

@@ -1,7 +1,7 @@
 .form-control {
   @include box-shadow(none);
   &:focus {
-    border-color: $orange;
+    border-color: #ccc;
     @include box-shadow(none);
   }
 }
@@ -11,6 +11,11 @@
   border-radius: 2px;
   color: $mid-grey;
   background: $white;
+}
+.input-group-btn .btn {
+  background: $white;
+  color: #ccc;
+  border-radius: 2px;
 }
 .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
   margin-left: 0;

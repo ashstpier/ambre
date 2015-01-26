@@ -1,6 +1,8 @@
 angular.module('main', [])
   .controller('main', function($scope, $http, $location, Spotify) {
 
+    $scope.navopen = false;
+
     $scope.downloadPlaylist = function(soundtrack) {
       Spotify.download(soundtrack)
         .success(function(data) {
@@ -16,10 +18,25 @@ angular.module('main', [])
       }
     }
 
-    $scope.submit = function() {
+    $scope.searchBook = function() {
       if ($scope.search) {
         $location.path('/books/' + $scope.search);
       }
+    };
+
+    $scope.toggleNav = function() {
+      if($scope.navopen == false){
+        angular.element('#offcanvas, .navbar, #page').addClass('nav-open');
+        $scope.navopen = true;
+      }else{
+        angular.element('#offcanvas, .navbar, #page').removeClass('nav-open');
+        $scope.navopen = false;
+      }
+    };
+
+    $scope.closeNav = function() {
+      angular.element('#offcanvas, .navbar, #page').removeClass('nav-open');
+      $scope.navopen = false;
     };
 
   });

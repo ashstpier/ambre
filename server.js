@@ -32,7 +32,7 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-passport.use(new SpotifyStrategy({
+var strategy = new SpotifyStrategy({
     clientID: client_id,
     clientSecret: client_secret,
     callbackURL: redirect_uri
@@ -44,7 +44,9 @@ passport.use(new SpotifyStrategy({
       return done(null, profile);
     });
   }
-));
+);
+
+passport.use(strategy);
 
 ///// DATABASE /////
 

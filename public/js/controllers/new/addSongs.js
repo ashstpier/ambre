@@ -42,7 +42,6 @@ angular.module('addSongs', [])
 
       Soundtrack.create($scope.playlist.book, $scope.playlist.soundtrack)
         .success(function(data) {
-          CurrentSoundtrack.del()
           $location.path('/user/playlists');
         });
     };

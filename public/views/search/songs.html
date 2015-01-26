@@ -1,11 +1,41 @@
-<div class="content addsongs">
+<div class="container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3 sidebar">
+      <div class="chosen-book">
+        <div class="media">
+          <div class="media-left">
+            <img src="{{ playlist.book.thumbnail }}"/>
+          </div>
+          <div class="media-body">
+            <h3>{{ playlist.book.title }}</h3>
+            <p><em>{{ playlist.book.author }}</em></p>
+          </div>
+        </div>
+        <div class="playlist-info">
+          <h4>{{ playlist.soundtrack.title }}</h4>
+          <p>{{ playlist.soundtrack.description | cut:true:140:'...' }}</p>
+          <p>{{ playlist.soundtrack.genre }}</p>
+        </div>
+
+        <h4 ng-show="playlist.soundtrack.tracks.length > 0">Playlist tracks</h4>
+        <ul class="songs">
+          <li ng-repeat="track in playlist.soundtrack.tracks">
+            {{ track.name }}
+            <button class="remove-song btn btn-xs" ng-click="removeTrack($index)"><i class="fa fa-times fa-fw"></i></button>
+            <br>
+            <span>{{ track.artist }}</span>
+          </li>
+        </ul>
+        <button ng-show="playlist.soundtrack.tracks.length > 0" type="submit" class="btn btn-default btn-block" ng-click="saveSoundtrack()"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp; Save playlist</button>
+      </div>
+    </div>
+
+    <div class="col-sm-9">
       <form>
-        <div class="input-group">
+        <div class="input-group search">
           <input type="text" class="form-control input-lg" placeholder="Search tracks..." ng-model="searchTerm">
           <span class="input-group-btn">
-            <button type="submit" class="btn btn-primary btn-lg" ng-click="searchTrack(searchTerm)"><i class="fa fa-search"></i></button>
+            <button type="submit" class="btn btn-lg" ng-click="searchTrack(searchTerm)"><i class="fa fa-search"></i></button>
           </span>
         </div>
       </form>
@@ -27,7 +57,7 @@
             <td>{{result.artists[0].name}}</td>
             <td>{{result.album.name}}</td>
             <td class="text-right">
-              <button type="submit" class="btn btn-primary btn-sm" ng-click="addTrack(result)"><i class="fa fa-plus fa-fw"></i></button>
+              <button type="submit" class="btn btn-default btn-xs" ng-click="addTrack(result)"><i class="fa fa-plus fa-fw"></i></button>
             </td>
           </tr>
         </tbody>
@@ -40,30 +70,3 @@
   </div>
 </div>
 
-<div class="sidebar">
-  <div class="sidebar-content">
-    <div class="chosen-book">
-      <div class="media">
-        <div class="media-left">
-          <img src="{{ playlist.book.thumbnail }}"/>
-        </div>
-        <div class="media-body">
-          <h3>{{ playlist.book.title }}</h3>
-          <p><em>{{ playlist.book.author }}</em></p>
-        </div>
-      </div>
-      <h4>{{ playlist.soundtrack.title }}</h4>
-      <p>{{ playlist.soundtrack.description | cut:true:140:'...' }}</p>
-      <p>{{ playlist.soundtrack.genre }}</p>
-      <h4>Tracks</h4>
-      <p ng-hide="playlist.soundtrack.tracks.length > 0">Your tracks will appear here</p>
-      <ul class="songs">
-        <li ng-repeat="track in playlist.soundtrack.tracks">
-          {{ track.name }} <br/><span>{{ track.artist }}</span>
-          <button class="btn btn-primary btn-sm" ng-click="removeTrack($index)">Remove</button>
-        </li>
-      </ul>
-    </div>
-    <button ng-show="playlist.soundtrack.tracks.length > 0" type="submit" class="btn btn-primary btn-block" ng-click="saveSoundtrack()">Save soundtrack</button>
-  </div>
-</div>

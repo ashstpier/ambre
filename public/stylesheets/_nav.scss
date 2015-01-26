@@ -1,8 +1,13 @@
 .navbar-default {
   background-color: $orange;
   border: none;
-  height: 60px;
-  padding: 5px;
+  height: 50px;
+  overflow: hidden;
+  width: 100%;
+  @include transition(left 300ms cubic-bezier(0.215, 0.610, 0.355, 1.000));
+  &.nav-open {
+    left: -$sidebar-width!important;
+  }
   .navbar-brand {
     color: $white;
     font-family: "grafolita-script",sans-serif;
@@ -15,23 +20,10 @@
   .navbar-text {
     color: $darker-orange; }
   .navbar-nav {
-    &.sidebar-nav {
-      background-color: $blue;
-      width: $sidebar-width;
-      a {
-        color: $light-blue;
-        &:hover,  &:focus {
-          background-color: $dark-blue;
-          color: $light-blue;
-        }
-      }
-      li {
-        float: right;
-      }
-    }
     > li {
       > a {
         color: $white;
+        cursor: pointer;
         padding-left: 20px;
         padding-right: 20px;
         font-weight: 200;
@@ -53,7 +45,7 @@
   .navbar-collapse,
   .navbar-form {
     border-color: $darker-orange;
-    margin: 5px 0;
+    margin: 0;
     .input-group {
       background-color: $dark-orange;
     }
@@ -63,7 +55,7 @@
       background-color: transparent;
       border-radius: 0;
       color: $white;
-      padding: 20px 10px;
+      padding: 25px 20px;
       @include input-placeholder {
         color: lighten($orange, 25%);
       }
@@ -99,4 +91,20 @@
       > a, > a:hover, > a:focus, {
         color: $dark-orange;
         background-color: $dark-orange; }}}
+}
+
+#offcanvas {
+  height: 100%;
+  background-color: darken(#61595A, 10%);
+  @include box-shadow(inset 20px 0px 40px -20px rgba(0,0,0,0.5));
+  width: $sidebar-width;
+  position: fixed;
+  top: 0;
+  right: -$sidebar-width;
+  z-index: 9999;
+  padding: 20px;
+  @include transition(right 300ms cubic-bezier(0.215, 0.610, 0.355, 1.000));
+  &.nav-open {
+    right: 0;
+  }
 }

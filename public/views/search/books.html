@@ -13,7 +13,7 @@
             <div class="book-content">
               <h3>{{result.title | cut:false:35:'...'}}</h3>
               <p><em>{{result.authors[0]}}&nbsp;</em></p>
-              <button class="btn btn-primary add-playlist" ng-click="chooseBook(result)" data-toggle="modal" data-target="#newPlaylist"><i class="fa fa-plus fa-fw"></i></button>
+              <button class="btn btn-default add-playlist" ng-click="chooseBook(result)" data-toggle="modal" data-target="#newPlaylist"><i class="fa fa-plus fa-fw"></i></button>
             </div>
           </div>
 
@@ -54,7 +54,7 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="newPlaylist()">Add songs</button>
       </div>
     </div>

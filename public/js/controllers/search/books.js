@@ -45,6 +45,7 @@ angular.module('books', [])
           description: $scope.formData.description,
           genre: $scope.formData.genre
         }
+        CurrentSoundtrack.del()
         CurrentSoundtrack.set({book: $scope.book, soundtrack: $scope.soundtrack});
         $location.path('/songs');
       }
