@@ -1,7 +1,11 @@
 module.exports = function(app, Soundtrack, Book){
 
   app.get('/api/soundtracks', function(req, res) {
-    Soundtrack.findAll({include: [ Book ], limit: 20})
+    Soundtrack.findAll({
+        include: [ Book ],
+        limit: 8,
+        order: '"createdAt" DESC'
+      })
       .complete(function(err, soundtracks) {
         if (!!err) {
           console.log('An error occurred:', err)
@@ -82,7 +86,7 @@ module.exports = function(app, Soundtrack, Book){
   });
 
   app.get('/api/user/soundtracks', function(req, res) {
-    Soundtrack.findAll({ where: { author: req.user.username }, include: [ Book ] })
+    Soundtrack.findAndCountAll({ where: { author: req.user.username }, include: [ Book ] })
       .complete(function(err, soundtracks) {
         if (!!err) {
           console.log('An error occurred:', err)

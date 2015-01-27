@@ -3,10 +3,10 @@ angular.module('userPlaylists', [])
 
     User.get()
       .success(function(data) {
-        $scope.playlists = data;
+        $scope.playlists = data.rows;
       });
 
-    $scope.deleteSoundtrack = function(id) {
+    $scope.deletePlaylist = function(id) {
       Soundtrack.delete(id)
         .success(function(data) {
           $scope.playlists = data;

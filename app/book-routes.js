@@ -1,4 +1,4 @@
-module.exports = function(app, Book){
+module.exports = function(app, Book, Soundtrack){
 
   app.get('/api/books', function(req, res) {
     Book.findAll()
@@ -10,6 +10,20 @@ module.exports = function(app, Book){
         } else {
           console.log('Found books.')
           res.json(books);
+        }
+      });
+  });
+
+  app.get('/api/books/:book_id', function(req, res) {
+    Book.find({ where: { id: req.params.book_id }, include: [ Soundtrack ]})
+      .complete(function(err, book) {
+        if (!!err) {
+          console.log('An error occurred:', err)
+        } else if (!book) {
+          res.send('error');
+        } else {
+          console.log('Found book.')
+          res.json(book);
         }
       });
   });

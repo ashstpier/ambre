@@ -1,5 +1,5 @@
-angular.module('addSongs', [])
-  .controller('addSongs', function($scope, $http, $location, Soundtrack, Spotify, CurrentSoundtrack) {
+angular.module('songs', [])
+  .controller('songs', function($scope, $http, $location, Soundtrack, Spotify, CurrentSoundtrack) {
     $scope.playlist = CurrentSoundtrack.get();
     $scope.playlist.soundtrack.tracks = [];
 

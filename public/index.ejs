@@ -20,12 +20,15 @@
 
   <!-- controllers -->
   <script src="js/controllers/search/books.js"></script>
-  <script src="js/controllers/new/addSongs.js"></script>
+  <script src="js/controllers/search/songs.js"></script>
 
   <script src="js/controllers/user/userPlaylists.js"></script>
 
   <script src="js/controllers/playlists/allPlaylists.js"></script>
   <script src="js/controllers/playlists/onePlaylist.js"></script>
+
+  <script src="js/controllers/books/oneBook.js"></script>
+
   <!-- services -->
   <script src="js/services/service.js"></script>
   <!-- app -->
@@ -45,7 +48,7 @@
 
       <form ng-submit="searchBook()" class="navbar-form navbar-left" role="search">
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for books..." ng-model="search">
+          <input type="text" class="form-control" placeholder="Search for books..." ng-model="search" autofocus>
           <span class="input-group-btn">
             <button ng-submit="searchBook()" class="btn btn-default" type="submit"><i class="fa fa-search fa-fw fa-lg"></i></button>
           </span>
@@ -55,20 +58,16 @@
       <ul class="nav navbar-nav navbar-right">
         <li id="offcanvas-button"><a ng-click="toggleNav()"><i class="fa fa-navicon fa-fw fa-lg"></i></a></li>
       </ul>
-
-
-        <!-- <li class="pull-left"><a href="/#/user/playlists"><i class="fa fa-music fa-fw fa-nav"></i> My playlists</a></li>
-        <li class="pull-right"><a href="/logout"><i class="fa fa-power-off fa-fw fa-nav"></i> Logout</a></li> -->
     </div>
   </nav>
 
   <div id="offcanvas">
+    <h3><i class="fa fa-user fa-fw"></i> <%= user.username %></h3>
     <ul>
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
-      <li>test</li>
+      <li><a href="/#/user/playlists" ng-click="closeNav()"><i class="fa fa-music fa-fw"></i> My playlists <span class="badge pull-right">{{playlist_count}}</span></a></li>
+      <li><a href="/#/" ng-click="closeNav()"><i class="fa fa-heart fa-fw"></i> Favourites <span class="badge pull-right">93</span></a></li>
+      <li><a href="/logout" ng-click="closeNav()"><i class="fa fa-cog fa-fw"></i> Settings</a></li>
+      <li><a href="/logout" ng-click="closeNav()"><i class="fa fa-power-off fa-fw"></i> Logout</a></li>
     </ul>
   </div>
 

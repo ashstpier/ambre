@@ -95,16 +95,47 @@
 
 #offcanvas {
   height: 100%;
-  background-color: darken(#61595A, 10%);
+  background-color: darken($dark-blue, 10%);
   @include box-shadow(inset 20px 0px 40px -20px rgba(0,0,0,0.5));
   width: $sidebar-width;
   position: fixed;
   top: 0;
   right: -$sidebar-width;
   z-index: 9999;
-  padding: 20px;
+  padding: 20px 30px;
+  color: $light-blue;
   @include transition(right 300ms cubic-bezier(0.215, 0.610, 0.355, 1.000));
   &.nav-open {
     right: 0;
+  }
+  h3 {
+    font-size: 1.1em;
+    letter-spacing: 0.05em;
+    margin-top: 0;
+    margin-bottom: 40px;
+    color: #fff;
+    padding-left: 10px;
+  }
+  .fa {
+    margin-right: 10px;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li {
+      border-bottom: 1px solid darken($dark-blue, 5%);
+      a {
+        color: $light-blue;
+        padding: 15px 10px;
+        display: block;
+        &:hover {
+          background-color: darken($dark-blue, 5%);
+          text-decoration: none;
+          color: #fff;
+        }
+
+      }
+    }
   }
 }

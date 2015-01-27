@@ -14,6 +14,11 @@
     float: right;
     color: $light-blue;
     background: transparent;
+    padding: 0;
+  }
+
+  .save {
+    margin-top: 20px;
   }
 
   .chosen-book {
@@ -40,8 +45,12 @@
       font-size: 1em;
       margin: 2px 0;
       line-height: 1.2em;
+      color: #888;
     }
     h4 {
+      border-top: 1px solid #eee;
+      margin-top: 15px;
+      padding-top: 15px;
       font-weight: 400;
       font-size: 1.1em;
     }
@@ -49,10 +58,10 @@
       padding-left: 0;
       font-weight: 400;
       font-size: 0.9em;
-      margin-bottom: 15px;
+      margin-bottom: 0;
       li {
         padding-bottom: 8px;
-        color: $orange;
+        color: #888;
         list-style-type: none;
       }
       span {
@@ -60,25 +69,5 @@
         color: $light-blue
       }
     }
-  }
-  input, textarea {
-    border-radius: 2px;
-    border: 0;
-    @include box-shadow(none);
-    background: $dark-blue;
-    border: none;
-    color: $white;
-    @include input-placeholder {
-      color: $white;
-    }
-  }
-  label {
-    font-weight: 200;
-    color: $light-blue;
-    font-size: 0.9em;
-    padding-bottom: 5px;
-  }
-  .label-default {
-    background: $blue;
   }
 }

@@ -13,10 +13,12 @@
   border-radius: 2px;
   overflow: hidden;
   border-bottom: 2px solid #e8e8e8;
+  border-top: 1px solid #e8e8e8;
   position: relative;
   .thumb {
-    background: lighten(#61595A, 25%) url('../images/dark-wood.png');
+    background: #e6e6e6;
     overflow: hidden;
+    text-align: center;
     &.thumb-padding {
       padding: 20px;
     }
@@ -36,8 +38,12 @@
       padding: 5px;
     }
     img {
-      height: 160px;
-      @include box-shadow(0px 3px 20px 2px rgba(0,0,0,0.5));
+      height: 200px;
+      max-width: 100%;
+      &.small {
+        height: 160px;
+      }
+      @include box-shadow(0px 3px 5px rgba(0,0,0,0.3));
     }
   }
   .book-content {
@@ -58,10 +64,7 @@
     white-space: nowrap;
   }
   .add-playlist {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    padding: 5px 0;
+    padding: 5px;
     text-align: center;
     position: absolute;
     top: 10px;

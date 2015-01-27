@@ -1,10 +1,11 @@
 angular.module('ambre',
   [
-    'addSongs',
-    'userPlaylists',
-    'allPlaylists',
     'books',
+    'songs',
+    'allPlaylists',
     'onePlaylist',
+    'oneBook',
+    'userPlaylists',
     'services',
     'main',
     'ngRoute',
@@ -15,13 +16,8 @@ angular.module('ambre',
     $routeProvider
 
       .when('/', {
-        templateUrl : '../views/playlists/all.html',
+        templateUrl : '../views/home.html',
         controller  : 'allPlaylists'
-      })
-
-      .when('/songs', {
-        templateUrl : '../views/search/songs.html',
-        controller  : 'addSongs'
       })
 
       .when('/playlists/:playlist_id', {
@@ -29,7 +25,17 @@ angular.module('ambre',
         controller  : 'onePlaylist'
       })
 
-      .when('/books/:search_term', {
+      .when('/books/:book_id', {
+        templateUrl : '../views/books/one.html',
+        controller  : 'oneBook'
+      })
+
+      .when('/songs/search', {
+        templateUrl : '../views/search/songs.html',
+        controller  : 'songs'
+      })
+
+      .when('/books/search/:search_term', {
         templateUrl : '../views/search/books.html',
         controller  : 'books'
       })

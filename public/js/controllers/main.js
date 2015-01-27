@@ -1,7 +1,12 @@
 angular.module('main', [])
-  .controller('main', function($scope, $http, $location, Spotify) {
+  .controller('main', function($scope, $http, $location, Spotify, User) {
 
     $scope.navopen = false;
+
+    User.get()
+      .success(function(data) {
+        $scope.playlist_count = data.count;
+      });
 
     $scope.downloadPlaylist = function(soundtrack) {
       Spotify.download(soundtrack)
@@ -20,7 +25,7 @@ angular.module('main', [])
 
     $scope.searchBook = function() {
       if ($scope.search) {
-        $location.path('/books/' + $scope.search);
+        $location.path('/books/search/' + $scope.search);
       }
     };
 

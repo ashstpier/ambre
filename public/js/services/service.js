@@ -21,6 +21,9 @@ angular.module('services', [])
       get : function() {
           return $http.get('/api/books');
       },
+      getOne : function(id) {
+          return $http.get('/api/books/' + id);
+      },
       create : function(bookData) {
           return $http.post('/api/books', bookData);
       }
