@@ -1,3 +1,5 @@
+var request = require('request');
+
 var books = require('google-books-search');
 var options = {
   key: "AIzaSyAd2RiqwcmJv7lkU-QgTsh-0gVXqnOC7vc",
@@ -27,5 +29,13 @@ module.exports = function(app){
         console.log(error);
       }
     });
+  });
+
+  app.get('/books/volume/:id', function(req, res) {
+    request('https://www.googleapis.com/books/v1/volumes/' + req.params.id, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        res.json(body);
+      }
+    })
   });
 }

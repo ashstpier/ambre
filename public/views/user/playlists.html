@@ -12,10 +12,9 @@
               </a>
             </div>
             <div class="book-content">
-              <h3>{{playlist.title | cut:false:35:'...'}}</h3>
-              <p>{{playlist.genre}}</p>
-              <p><a href="#">{{playlist.author}}</a></p>
-              <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#deletePlaylist">Delete playlist</button>
+              <h3>{{playlist.book.title | cut:false:35:'...'}}</h3>
+              <p>{{playlist.book.author}}</p>
+              <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#deletePlaylist" ng-click="selectPlaylist(playlist.id)">Delete playlist</button>
             </div>
           </div>
 
@@ -37,7 +36,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deletePlaylist(playlist.id)">Delete</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deletePlaylist(delete_id)">Delete</button>
       </div>
     </div>
   </div>

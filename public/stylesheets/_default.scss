@@ -18,9 +18,8 @@ body {
     left: -$sidebar-width;
   }
 }
-.content {
-  margin-right: $sidebar-width;
-  padding: 30px;
+.container {
+  padding: 40px 0;
 }
 .header {
   background: lighten(#61595A, 10%) url('../images/dark-wood.png');
@@ -44,7 +43,13 @@ h2 {
   font-weight: 200;
   font-size: 1.8em;
   letter-spacing: 0.05em;
-  margin-top: 40px;
+  margin: 5px 0 20px;
+}
+h3 {
+  color: #888;
+  font-weight: 200;
+  font-size: 1.5em;
+  margin: 0px 0 10px;
 }
 .badge {
   font-weight: 400;
@@ -141,7 +146,4 @@ a {
   background: #eee;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-}
-.search {
-  margin-top: 40px;
 }

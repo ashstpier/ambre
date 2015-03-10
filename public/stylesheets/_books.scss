@@ -1,9 +1,8 @@
 .booklist {
-  margin: 40px -15px;
+  margin: 0 -15px;
   padding: 0;
   list-style-type: none;
   li {
-    margin-bottom: 30px;
     vertical-align: top;
     text-align: center;
   }
@@ -12,20 +11,21 @@
 .book {
   border-radius: 2px;
   overflow: hidden;
-  border-bottom: 2px solid #e8e8e8;
-  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  border-top: 1px solid #e3e3e3;
   position: relative;
+  margin-bottom: 20px;
   .thumb {
     background: #e6e6e6;
     overflow: hidden;
     text-align: center;
     &.thumb-padding {
-      padding: 20px;
+      padding: 15px;
     }
     a {
       display: block;
       height: 100%;
-      padding: 20px;
+      padding: 15px;
       color: $grey;
     }
     .media-left {
@@ -61,7 +61,6 @@
   p {
     font-size: 0.9em;
     margin: 0;
-    white-space: nowrap;
   }
   .add-playlist {
     padding: 5px;

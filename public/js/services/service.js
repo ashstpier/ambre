@@ -18,7 +18,7 @@ angular.module('services', [])
   })
   .factory('Book', function($http) {
     return {
-      get : function() {
+      getAll : function() {
           return $http.get('/api/books');
       },
       getOne : function(id) {
@@ -65,7 +65,10 @@ angular.module('services', [])
   .factory('GoogleBooks', function($http) {
     return {
       search : function(term) {
-        return $http.get('/books/' + term);
+        return $http.get('/books/' + term, {cache: true});
+      },
+      get : function(id) {
+        return $http.get('/books/volume/' + id);
       }
     }
   });

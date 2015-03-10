@@ -6,6 +6,10 @@ angular.module('userPlaylists', [])
         $scope.playlists = data.rows;
       });
 
+    $scope.selectPlaylist = function(id) {
+      $scope.delete_id = id;
+    };
+
     $scope.deletePlaylist = function(id) {
       Soundtrack.delete(id)
         .success(function(data) {

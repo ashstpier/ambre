@@ -1,5 +1,5 @@
 angular.module('main', [])
-  .controller('main', function($scope, $http, $location, Spotify, User) {
+  .controller('main', function($scope, $http, $sce, $location, Spotify, User) {
 
     $scope.navopen = false;
 
@@ -42,6 +42,10 @@ angular.module('main', [])
     $scope.closeNav = function() {
       angular.element('#offcanvas, .navbar, #page').removeClass('nav-open');
       $scope.navopen = false;
+    };
+
+    $scope.renderHtml = function(html_code){
+      return $sce.trustAsHtml(html_code);
     };
 
   });

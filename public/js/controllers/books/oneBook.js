@@ -14,20 +14,30 @@ angular.module('oneBook', [])
       "Reggae",
       "Rock",
     ]
+    $scope.sort = 'all';
 
     Book.getOne($routeParams.book_id)
       .success(function(data) {
         $scope.book = data;
         if($scope.book == 'error'){
 
-          GoogleBooks.search($routeParams.book_id)
+          GoogleBooks.get($routeParams.book_id)
             .success(function(data) {
+              var data = JSON.parse(data)
               $scope.book = {
-                id: data[0].id,
-                title: data[0].title,
-                author: data[0].authors[0],
-                thumbnail: data[0].thumbnail,
+                id: data.id,
+                title: data.volumeInfo.title,
+                author: data.volumeInfo.authors[0],
+                thumbnail: data.volumeInfo.imageLinks.thumbnail,
+                description: data.volumeInfo.description,
+                publisher: data.volumeInfo.publisher,
+                published_date: new Date(data.volumeInfo.publishedDate),
+                page_count: data.volumeInfo.pageCount,
+                category: data.volumeInfo.mainCategory,
+                link: data.volumeInfo.infoLink,
+                price: data.saleInfo.listPrice,
               }
+              Book.create($scope.book);
             });
 
         }

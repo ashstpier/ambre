@@ -6,7 +6,14 @@ module.exports = function(database){
     },
     title : database.dataType.STRING,
     thumbnail : database.dataType.STRING,
-    author: database.dataType.STRING
+    author: database.dataType.STRING,
+    description: database.dataType.TEXT,
+    publisher: database.dataType.STRING,
+    published_date: database.dataType.DATE,
+    page_count: database.dataType.INTEGER,
+    category: database.dataType.STRING,
+    link: database.dataType.STRING,
+    price: database.dataType.FLOAT
   })
 
   return Book;

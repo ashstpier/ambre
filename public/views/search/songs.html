@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3 col-sm-4 sidebar">
+    <div class="col-lg-3 col-md-4 sidebar">
       <div class="chosen-book">
         <div class="book">
           <div class="thumb thumb-padding">
             <img class="small" src="{{playlist.book.thumbnail}}"/>
           </div>
           <div class="book-content">
-            <h3>{{playlist.soundtrack.title | cut:false:35:'...'}}</h3>
+            <h3>{{playlist.soundtrack.title}}</h3>
+            <h3>{{playlist.soundtrack.description}}</h3>
             <p>{{playlist.soundtrack.genre}}</p>
             <h4 ng-show="playlist.soundtrack.tracks.length > 0">Tracks</h4>
             <ol class="songs">
@@ -24,7 +25,7 @@
       </div>
     </div>
 
-    <div class="col-md-9 col-sm-8">
+    <div class="col-lg-9 col-md-8">
       <form>
         <div class="input-group search">
           <input type="text" class="form-control input-lg" placeholder="Search tracks..." ng-model="searchTerm">
@@ -46,7 +47,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="result in search_results track by $index">
-            <td><img src="{{result.album.images[2].url}}" width="32px"></td>
+            <td><img src="{{result.album.images[2].url}}" width="40px"></td>
             <td>{{result.name}}</td>
             <td>{{result.artists[0].name}}</td>
             <td>{{result.album.name}}</td>

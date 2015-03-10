@@ -41,8 +41,14 @@ module.exports = function(app, Soundtrack, Book){
       defaults: {
         title : book.title,
         author : book.author,
-        publisher : book.publisher,
-        thumbnail : book.thumbnail
+        thumbnail : book.thumbnail,
+        description: book.description,
+        publisher: book.publisher,
+        published_date: book.published_date,
+        page_count: book.page_count,
+        category: book.category,
+        link: book.link,
+        price: book.price
       }
     })
     .spread(function(book, created) {

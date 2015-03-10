@@ -29,24 +29,18 @@ module.exports = function(app, Book, Soundtrack){
   });
 
   app.post('/api/books', function(req, res) {
-    console.log(req.body)
     Book.create({
         id : req.body.id,
         title : req.body.title,
         author : req.body.author,
-        thumbnail : req.body.thumbnail
-      })
-      .complete(function(err, books) {
-        Book.findAll()
-          .complete(function(err, books) {
-            if (!!err) {
-              console.log('An error occurred:', err)
-            } else if (!books) {
-              console.log('No books have been found.')
-            } else {
-              res.json(books);
-            }
-          })
+        thumbnail : req.body.thumbnail,
+        description: req.body.description,
+        publisher: req.body.publisher,
+        published_date: req.body.published_date,
+        page_count: req.body.page_count,
+        category: req.body.category,
+        link: req.body.link,
+        price: req.body.price
       });
   });
 }

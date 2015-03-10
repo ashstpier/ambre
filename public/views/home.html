@@ -14,18 +14,18 @@
 
       <h2>Latest playlists</h2>
       <ul class="booklist clearfix">
-        <li ng-repeat="playlist in playlists" class="col-md-3 col-sm-4 col-xs-6">
+        <li ng-repeat="playlist in playlists" class="col-md-4 col-sm-6 col-xs-12">
 
-          <div class="book">
+          <div class="playlist">
             <div class="thumb">
               <a href="/#/playlists/{{playlist.id}}">
                 <img src="{{playlist.book.thumbnail}}"/>
               </a>
             </div>
-            <div class="book-content">
-              <h3>{{playlist.title | cut:false:35:'...'}}</h3>
-              <p>{{playlist.book.title}}</p>
-              <p><a href="#">{{playlist.genre}}</a></p>
+            <div class="playlist-content">
+              <h3><a href="/#/playlists/{{playlist.id}}">{{playlist.title | cut:false:40:'...'}}</a></h3>
+              <p>{{playlist.book.title | cut:false:40:'...'}}</p>
+              <p><em>{{playlist.genre}}</em></p>
             </div>
           </div>
 

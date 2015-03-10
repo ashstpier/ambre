@@ -1,23 +1,45 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <img src="{{ book.thumbnail }}"/>
+    <div class="col-md-3">
+      <div class="playlist-thumb">
+        <img src="{{ book.thumbnail }}"/>
+      </div>
+      <div class="playlist-info">
           <h4>{{ book.title }}</h4>
           <p>{{ book.author }}</p>
           <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#newPlaylist"><i class="fa fa-plus fa-fw"></i> New playlist</button>
-        </div>
       </div>
+      <form class="form-inline">
+        <div class="form-group">
+          <select class="form-control" ng-model="sort">
+            <option selected="selected" value="all">All genres</option>
+            <option ng-repeat="genre in genres">{{genre}}</option>
+          </select>
+        </div>
+      </form>
     </div>
-    <div ng-repeat="soundtrack in book.soundtracks track by $index" class="col-md-4">
-      <div class="book">
-        <a href="/#/playlists/{{soundtrack.id}}">
-          <div class="book-content">
-            <h3>{{soundtrack.title | cut:false:35:'...'}}</h3>
-            <p><a href="#">{{soundtrack.genre}}</a></p>
-          </div>
-        </a>
+    <div class="col-md-8">
+      <div class="playlist-info"><p>{{ book.category }}</p>
+          <div ng-bind-html="renderHtml(book.description)"></div>
+          <p>{{ book.publisher }}</p>
+          <p>{{ book.published_date | date:'dd MMM yy' }}</p>
+          <p>{{ book.page_count }}</p>
+          <p>{{ book.link }}</p>
+          <p>{{ book.price }}</p>
+      </div>
+      <h2>Playlists</h2>
+      <p ng-hide="book.soundtracks">No playlists for this book</p>
+      <div class="playlist" ng-repeat="soundtrack in book.soundtracks track by $index" ng-show="soundtrack.genre == sort || sort == 'all'">
+        <div class="track-thumb">
+          <a href="/#/playlists/{{soundtrack.id}}">
+            <img src="{{soundtrack.tracks[0].cover}}"/>
+          </a>
+        </div>
+        <div class="playlist-content">
+          <h3><a href="/#/playlists/{{soundtrack.id}}">{{soundtrack.title | cut:false:40:'...'}}</a></h3>
+          <p><em>Genre:</em> {{soundtrack.genre}}</p>
+          <p><em>Tracks:</em> {{soundtrack.tracks.length}}</p>
+        </div>
       </div>
     </div>
   </div>
