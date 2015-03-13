@@ -40,7 +40,6 @@ module.exports = function(app, Book, Soundtrack){
         page_count: req.body.page_count,
         category: req.body.category,
         link: req.body.link,
-        price: req.body.price
       });
   });
 }

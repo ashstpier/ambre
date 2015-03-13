@@ -5,15 +5,14 @@ module.exports = function(database){
       primaryKey: true
     },
     title : database.dataType.STRING,
-    thumbnail : database.dataType.STRING,
+    thumbnail : database.dataType.TEXT,
     author: database.dataType.STRING,
     description: database.dataType.TEXT,
     publisher: database.dataType.STRING,
     published_date: database.dataType.DATE,
     page_count: database.dataType.INTEGER,
     category: database.dataType.STRING,
-    link: database.dataType.STRING,
-    price: database.dataType.FLOAT
+    link: database.dataType.STRING
   })
 
   return Book;

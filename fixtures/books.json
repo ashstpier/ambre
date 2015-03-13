@@ -1,0 +1,32 @@
+[
+  {
+    "model": "Book",
+    "data": {
+      "id": "nb_cOTgYWAYC",
+      "title": "Storm Front",
+      "thumbnail": "http://books.google.com/books/content?id=nb_cOTgYWAYC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE71a-JIVwC1P36fECWbKhIrk_FAKqwRkOG_DFFTpzCA6lBneMnF9p-tasyChUZXhhukbhZrp4_3RyYQIe2SfqF3UD5h-Add5aofMSNdVfooDxR_kryOFJZA4TAT87PNEFczdrKzm&source=gbs_api",
+      "author": "Jim Butcher",
+      "description": "<p>Meet Harry Dresden, Chicago's first (and only) Wizard P.I. Turns out the 'everyday' world is full of strange and magical things - and most of them don't play well with humans. That's where Harry comes in.</p><p> </p><p> Harry is the best at what he does - and not just because he's the only one who does it. So when the Chicago P.D. has a case that transcends mortal capabilities, they look to him for answers. There's just one problem. Business, to put it mildly, stinks. </p>",
+      "publisher": "Hachette UK",
+      "published_date": "2010-03-04 00:00:00+00",
+      "page_count": 352,
+      "category": "Fiction / Fantasy / General",
+      "link": "http://books.google.co.uk/books?id=nb_cOTgYWAYC&hl=&source=gbs_api"
+    }
+  },
+  {
+    "model": "Book",
+    "data": {
+      "id": "etukl7GfrxQC",
+      "title": "Harry Potter and the Goblet of Fire",
+      "thumbnail": "http://books.google.com/books/content?id=etukl7GfrxQC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE70LERFadHpwT5YhijVFMfRu5AcgHy5ezl_DhbMspuoUr_7_YrpSEEQqOwWoj4jPL8ExzrCHqRjeM7kO4j9Jg543Rc3YqmMdqmpdJQ4o3DTrFT0f9gveoW2dq8X7wl9l2SDjpjSF&source=gbs_api",
+      "author": "J.K. Rowling",
+      "description": "In Harry Potter and the Goblet of Fire, Harry is midway through both his training as a wizard and his coming of age. He wants to get away from the malicious Dursleys and go to the Quidditch World Cup with Hermione, Ron, and the Weasleys. He wants to dream about his crush, Cho Chang (and maybe do more than dream). And now that he’s gotten the hang of things at Hogwarts—he hopes—he just wants to be a normal fourteen-year-old wizard. But even by his standards, Harry's year is anything but normal. First Dumbledore announces the revival of a grand competition that hasn't taken place for one hundred years: the Triwizard Tournament, where a Hogwarts champion will compete against rivals from two other schools of magic in three highly dangerous tasks. Then someone frames Harry to participate in the tournament—which really means someone wants him dead. Harry is guided through the competition by Professor Alastor Moody, this year's Defense Against the Dark Arts teacher, but he must also contend with a nasty reporter named Rita Skeeter, who digs up some highly unflattering secrets about Hagrid; a terrible fight with Ron, who is deeply jealous of Harry's fame; Hermione's newfound activism on behalf of house-elves; and the terrifying prospect of asking a date to the Yule Ball. Worst of all, Lord Voldemort may finally have gathered the materials necessary for his rejuvenation... and he has a faithful servant at Hogwarts waiting only for a sign. No, nothing is ever normal for Harry Potter. And in his case, different can be deadly.",
+      "publisher": "Pottermore",
+      "published_date": "2012-03-27 00:00:00+00",
+      "page_count": 832,
+      "category": "Juvenile Fiction / Fantasy & Magic",
+      "link": "http://books.google.co.uk/books?id=etukl7GfrxQC&hl=&source=gbs_api"
+    }
+  }
+]

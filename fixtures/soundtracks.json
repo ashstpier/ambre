@@ -1,0 +1,24 @@
+[
+  {
+    "model": "Soundtrack",
+    "data": {
+      "title": "Dresden's tunes",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "genre": "Indie/Alternative",
+      "author": "shaylepriest",
+      "tracks": "",
+      "bookId": "nb_cOTgYWAYC"
+    }
+  },
+  {
+    "model": "Soundtrack",
+    "data": {
+      "title": "Hermione's tunes",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "genre": "Electronic",
+      "author": "shaylepriest",
+      "tracks": "",
+      "bookId": "etukl7GfrxQC"
+    }
+  }
+]

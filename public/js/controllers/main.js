@@ -44,8 +44,9 @@ angular.module('main', [])
       $scope.navopen = false;
     };
 
-    $scope.renderHtml = function(html_code){
-      return $sce.trustAsHtml(html_code);
+    $scope.renderHtml = function(html_code, max){
+      var html = html_code || '';
+      return $sce.trustAsHtml(html.substr(0, max).trim() + '…')
     };
 
   });

@@ -3,7 +3,7 @@ module.exports = function(app, Soundtrack, Book){
   app.get('/api/soundtracks', function(req, res) {
     Soundtrack.findAll({
         include: [ Book ],
-        limit: 8,
+        limit: 20,
         order: '"createdAt" DESC'
       })
       .complete(function(err, soundtracks) {
@@ -36,22 +36,9 @@ module.exports = function(app, Soundtrack, Book){
     var book = req.body.book;
     var soundtrack = req.body.soundtrack;
 
-    Book.findOrCreate({
-      where: { id: book.id },
-      defaults: {
-        title : book.title,
-        author : book.author,
-        thumbnail : book.thumbnail,
-        description: book.description,
-        publisher: book.publisher,
-        published_date: book.published_date,
-        page_count: book.page_count,
-        category: book.category,
-        link: book.link,
-        price: book.price
-      }
-    })
-    .spread(function(book, created) {
+    Book.find({ where: {id: book} })
+    .then(function(book) {
+      console.log(book)
       Soundtrack.create({
           title: soundtrack.title,
           description: soundtrack.description,

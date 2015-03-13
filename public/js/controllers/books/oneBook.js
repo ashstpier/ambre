@@ -14,7 +14,8 @@ angular.module('oneBook', [])
       "Reggae",
       "Rock",
     ]
-    $scope.sort = 'all';
+    $scope.sort_genre = 'all';
+    $scope.predicate = 'createdAt'
 
     Book.getOne($routeParams.book_id)
       .success(function(data) {
@@ -33,9 +34,8 @@ angular.module('oneBook', [])
                 publisher: data.volumeInfo.publisher,
                 published_date: new Date(data.volumeInfo.publishedDate),
                 page_count: data.volumeInfo.pageCount,
-                category: data.volumeInfo.mainCategory,
+                category: data.volumeInfo.categories[0],
                 link: data.volumeInfo.infoLink,
-                price: data.saleInfo.listPrice,
               }
               Book.create($scope.book);
             });
@@ -51,7 +51,7 @@ angular.module('oneBook', [])
             genre: $scope.formData.genre
           }
           CurrentSoundtrack.del()
-          CurrentSoundtrack.set({book: $scope.book, soundtrack: $scope.soundtrack});
+          CurrentSoundtrack.set({id: $scope.book.id, soundtrack: $scope.soundtrack});
           $location.path('/songs/search');
         }
       };

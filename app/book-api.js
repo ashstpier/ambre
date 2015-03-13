@@ -32,7 +32,7 @@ module.exports = function(app){
   });
 
   app.get('/books/volume/:id', function(req, res) {
-    request('https://www.googleapis.com/books/v1/volumes/' + req.params.id, function (error, response, body) {
+    request('https://www.googleapis.com/books/v1/volumes/' + req.params.id + '?key=' + options.key, function (error, response, body) {
       if (!error && response.statusCode == 200) {
         res.json(body);
       }

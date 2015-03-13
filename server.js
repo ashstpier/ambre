@@ -60,6 +60,25 @@ var Book = require('./app/models/book')(database);
 Book.hasMany(Soundtrack)
 Soundtrack.belongsTo(Book)
 
+database.sequelize
+  .sync({force:true})
+  .complete(function(err) {
+     if (!!err) {
+       console.log('An error occurred while creating the table:', err)
+     } else {
+        var sequelize_fixtures = require('sequelize-fixtures');
+        var models = {
+          Book: Book,
+          Soundtrack: Soundtrack
+        };
+
+        sequelize_fixtures.loadFiles(['fixtures/books.json', 'fixtures/soundtracks.json'], models).then(function(){
+
+        });
+     }
+  })
+
+
 ///// APP /////
 
 var app = express();

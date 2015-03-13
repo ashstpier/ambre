@@ -1,7 +1,12 @@
 angular.module('songs', [])
-  .controller('songs', function($scope, $http, $location, Soundtrack, Spotify, CurrentSoundtrack) {
+  .controller('songs', function($scope, $http, $location, Soundtrack, Book, Spotify, CurrentSoundtrack) {
     $scope.playlist = CurrentSoundtrack.get();
     $scope.playlist.soundtrack.tracks = [];
+
+    Book.getOne($scope.playlist.id)
+      .success(function(data) {
+        $scope.book = data
+      });
 
     Spotify.library()
       .success(function(data) {
@@ -31,6 +36,7 @@ angular.module('songs', [])
           cover: track.album.images[2].url || track.album.images[1].url || track.album.images[0].url
         }
         $scope.playlist.soundtrack.tracks.push(track);
+        console.log($scope.playlist.soundtrack.tracks);
       }
     };
 
@@ -40,7 +46,7 @@ angular.module('songs', [])
 
     $scope.saveSoundtrack = function() {
 
-      Soundtrack.create($scope.playlist.book, $scope.playlist.soundtrack)
+      Soundtrack.create($scope.book.id, $scope.playlist.soundtrack)
         .success(function(data) {
           $location.path('/user/playlists');
         });
