@@ -1,11 +1,11 @@
-module.exports = function(app, passport){
+module.exports = function(app, passport, User){
 
   app.get('*/', ensureAuthenticated, function(req, res){
-    res.render('index', { user: req.user });
+    res.render('index', { user: req.session.user });
   });
 
   app.get('/login', function(req, res){
-    res.render('login', { user: req.user });
+    res.render('login');
   });
 
   app.get('/logout', function(req, res){
@@ -20,7 +20,12 @@ module.exports = function(app, passport){
   app.get('/callback',
     passport.authenticate('spotify', {failureRedirect: '/'}),
     function(req, res) {
-      res.redirect('/');
+      User
+        .findOrCreate({where: {id: req.user.id}, defaults: {name: req.user.username}})
+        .spread(function(user, created) {
+          req.session.user = user
+          res.redirect('/');
+        })
     });
 
   function ensureAuthenticated(req, res, next) {

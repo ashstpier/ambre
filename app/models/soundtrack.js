@@ -3,7 +3,6 @@ module.exports = function(database){
     title : database.dataType.STRING,
     description : database.dataType.STRING,
     genre : database.dataType.STRING,
-    author : database.dataType.STRING,
     tracks: {
       type: database.dataType.TEXT,
       get: function() {

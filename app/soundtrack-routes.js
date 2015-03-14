@@ -1,4 +1,4 @@
-module.exports = function(app, Soundtrack, Book){
+module.exports = function(app, Soundtrack, Book, User){
 
   app.get('/api/soundtracks', function(req, res) {
     Soundtrack.findAll({
@@ -19,7 +19,7 @@ module.exports = function(app, Soundtrack, Book){
   });
 
   app.get('/api/soundtracks/:soundtrack_id', function(req, res) {
-    Soundtrack.find({ where: { id: req.params.soundtrack_id }, include: [ Book ]})
+    Soundtrack.find({ where: { id: req.params.soundtrack_id }, include: [ Book, User ]})
       .complete(function(err, soundtrack) {
         if (!!err) {
           console.log('An error occurred:', err)
@@ -36,21 +36,23 @@ module.exports = function(app, Soundtrack, Book){
     var book = req.body.book;
     var soundtrack = req.body.soundtrack;
 
-    Book.find({ where: {id: book} })
+    Book.find(book)
     .then(function(book) {
-      console.log(book)
-      Soundtrack.create({
-          title: soundtrack.title,
-          description: soundtrack.description,
-          genre: soundtrack.genre,
-          author : req.user.username,
-          tracks : soundtrack.tracks
-        })
-        .complete(function(err, soundtrack) {
-          book.addSoundtrack(soundtrack).complete(function(err) {});
-          res.json(soundtrack);
+      User.find({ where: {id: req.user.username} })
+        .then(function(user) {
+          Soundtrack.create({
+              title: soundtrack.title,
+              description: soundtrack.description,
+              genre: soundtrack.genre,
+              tracks: soundtrack.tracks
+            })
+            .complete(function(err, soundtrack) {
+              book.addSoundtrack(soundtrack).complete(function(err) {});
+              user.addSoundtrack(soundtrack).complete(function(err) {});
+              res.json(soundtrack);
+            });
         });
-    })
+    });
   });
 
   app.delete('/api/soundtracks/:soundtrack_id', function(req, res) {
@@ -78,8 +80,8 @@ module.exports = function(app, Soundtrack, Book){
       });
   });
 
-  app.get('/api/user/soundtracks', function(req, res) {
-    Soundtrack.findAndCountAll({ where: { author: req.user.username }, include: [ Book ] })
+  app.get('/api/users/:user_id', function(req, res) {
+    Soundtrack.findAll({ where: { userId: req.params.user_id }, include: [ Book ] })
       .complete(function(err, soundtracks) {
         if (!!err) {
           console.log('An error occurred:', err)
@@ -87,6 +89,31 @@ module.exports = function(app, Soundtrack, Book){
           console.log('No soundtracks have been found.')
         } else {
           res.json(soundtracks);
+        }
+      });
+  });
+
+  app.get('/api/user/soundtracks', function(req, res) {
+    Soundtrack.findAll({ where: { userId: req.user.id }, include: [ Book ] })
+      .complete(function(err, soundtracks) {
+        if (!!err) {
+          console.log('An error occurred:', err)
+        } else if (!soundtracks) {
+          console.log('No soundtracks have been found.')
+        } else {
+          res.json(soundtracks);
+        }
+      });
+  });
+  app.get('/api/user', function(req, res) {
+    User.find({ where: { id: req.user.id }, include: [ Soundtrack ] })
+      .complete(function(err, user) {
+        if (!!err) {
+          console.log('An error occurred:', err)
+        } else if (!user) {
+          console.log('No soundtracks have been found.')
+        } else {
+          res.json(user);
         }
       });
   });

@@ -23,6 +23,7 @@
   <script src="js/controllers/search/songs.js"></script>
 
   <script src="js/controllers/user/userPlaylists.js"></script>
+   <script src="js/controllers/users/usersPlaylists.js"></script>
 
   <script src="js/controllers/playlists/allPlaylists.js"></script>
   <script src="js/controllers/playlists/onePlaylist.js"></script>
@@ -62,7 +63,7 @@
   </nav>
 
   <div id="offcanvas">
-    <h3><i class="fa fa-user fa-fw"></i> <%= user.username %></h3>
+    <h3><i class="fa fa-user fa-fw"></i> {{ user.name }}</h3>
     <ul>
       <li><a href="/#/user/playlists" ng-click="closeNav()"><i class="fa fa-music fa-fw"></i> My playlists <span class="badge pull-right">{{playlist_count}}</span></a></li>
       <li><a href="/#/" ng-click="closeNav()"><i class="fa fa-heart fa-fw"></i> Favourites <span class="badge pull-right">93</span></a></li>

@@ -29,10 +29,20 @@ angular.module('services', [])
       }
     }
   })
-  .factory('User', function($http) {
+  .factory('UserPlaylist', function($http) {
     return {
       get : function() {
         return $http.get('/api/user/soundtracks');
+      },
+      getOne : function(id) {
+        return $http.get('/api/users/' + id);
+      }
+    }
+  })
+  .factory('User', function($http) {
+    return {
+      get : function() {
+        return $http.get('/api/user');
       }
     }
   })

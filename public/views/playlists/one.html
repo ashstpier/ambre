@@ -12,7 +12,7 @@
         <h3>{{ playlist.title }}</h3>
         <p>Genre: <a href="">{{ playlist.genre }}</a></p>
         <p>{{ playlist.description }}</p>
-        <p class="author">By: <a href="">{{ playlist.author }}</a></p>
+        <p class="author">By: <a href="/#/users/{{ playlist.user.id }}">{{ playlist.user.name }}</a></p>
         <p class="date"><em>{{ playlist.createdAt | date:'dd MMM yyyy'}}</em></p>
         <img src="images/create-playlist-green.png" class="create-playlist" ng-click="downloadPlaylist(playlist)" width="100%">
       </div>

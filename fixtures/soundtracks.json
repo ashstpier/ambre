@@ -5,9 +5,9 @@
       "title": "Dresden's tunes",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "genre": "Indie/Alternative",
-      "author": "shaylepriest",
       "tracks": "",
-      "bookId": "nb_cOTgYWAYC"
+      "bookId": "nb_cOTgYWAYC",
+      "userId": "dave"
     }
   },
   {
@@ -16,9 +16,31 @@
       "title": "Hermione's tunes",
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "genre": "Electronic",
-      "author": "shaylepriest",
       "tracks": "",
-      "bookId": "etukl7GfrxQC"
+      "bookId": "etukl7GfrxQC",
+      "userId": "dave"
+    }
+  },
+  {
+    "model": "Soundtrack",
+    "data": {
+      "title": "Ron's tunes",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "genre": "Rock",
+      "tracks": "",
+      "bookId": "etukl7GfrxQC",
+      "userId": "dave"
+    }
+  },
+  {
+    "model": "Soundtrack",
+    "data": {
+      "title": "Murphey's tunes",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "genre": "Electronic",
+      "tracks": "",
+      "bookId": "nb_cOTgYWAYC",
+      "userId": "dave"
     }
   }
 ]

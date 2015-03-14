@@ -6,6 +6,7 @@ angular.module('ambre',
     'onePlaylist',
     'oneBook',
     'userPlaylists',
+    'usersPlaylists',
     'services',
     'main',
     'ngRoute',
@@ -38,6 +39,11 @@ angular.module('ambre',
       .when('/books/search/:search_term', {
         templateUrl : '../views/search/books.html',
         controller  : 'books'
+      })
+
+      .when('/users/:user_id', {
+        templateUrl : '../views/users/playlists.html',
+        controller  : 'usersPlaylists'
       })
 
       .when('/user/playlists', {

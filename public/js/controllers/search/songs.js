@@ -36,7 +36,6 @@ angular.module('songs', [])
           cover: track.album.images[2].url || track.album.images[1].url || track.album.images[0].url
         }
         $scope.playlist.soundtrack.tracks.push(track);
-        console.log($scope.playlist.soundtrack.tracks);
       }
     };
 

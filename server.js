@@ -54,11 +54,16 @@ var database = require('./config/database');
 
 ///// MODELS /////
 
+var User = require('./app/models/user')(database);
 var Soundtrack = require('./app/models/soundtrack')(database);
 var Book = require('./app/models/book')(database);
 
+
 Book.hasMany(Soundtrack)
 Soundtrack.belongsTo(Book)
+Soundtrack.belongsTo(User)
+User.hasMany(Soundtrack)
+
 
 database.sequelize
   .sync({force:true})
@@ -68,11 +73,12 @@ database.sequelize
      } else {
         var sequelize_fixtures = require('sequelize-fixtures');
         var models = {
+          User: User,
           Book: Book,
           Soundtrack: Soundtrack
         };
 
-        sequelize_fixtures.loadFiles(['fixtures/books.json', 'fixtures/soundtracks.json'], models).then(function(){
+        sequelize_fixtures.loadFiles(['fixtures/users.json', 'fixtures/books.json', 'fixtures/soundtracks.json'], models).then(function(){
 
         });
      }
@@ -98,8 +104,8 @@ app.set('views', __dirname + '/public');
 
 ///// ROUTES /////
 
-require('./app/auth-routes')(app, passport);
-require('./app/soundtrack-routes')(app, Soundtrack, Book);
+require('./app/auth-routes')(app, passport, User);
+require('./app/soundtrack-routes')(app, Soundtrack, Book, User);
 require('./app/book-routes')(app, Book, Soundtrack);
 require('./app/book-api')(app);
 require('./app/spotify-api')(app, spotifyApi);

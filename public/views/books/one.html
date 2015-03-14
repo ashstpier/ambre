@@ -33,18 +33,24 @@
         </div>
       </form>
       <p ng-hide="book.soundtracks">No playlists for this book</p>
-      <div class="playlist" ng-repeat="soundtrack in book.soundtracks track by $index" ng-show="soundtrack.genre == sort_genre || sort_genre == 'all'">
-        <div class="track-thumb">
-          <a href="/#/playlists/{{soundtrack.id}}">
-            <img src="{{soundtrack.tracks[0].cover}}"/>
-          </a>
-        </div>
-        <div class="playlist-content">
-          <h3><a href="/#/playlists/{{soundtrack.id}}">{{soundtrack.title | cut:false:40:'...'}}</a></h3>
-          <p><em>Genre:</em> {{soundtrack.genre}}</p>
-          <p><em>Tracks:</em> {{soundtrack.tracks.length}}</p>
-        </div>
-      </div>
+      <ul class="booklist clearfix">
+        <li ng-repeat="playlist in book.soundtracks track by $index" class="col-lg-6 col-md-12" ng-show="playlist.genre == sort_genre || sort_genre == 'all'">
+
+          <div class="playlist">
+            <div class="track-thumb">
+              <a href="/#/playlists/{{playlist.id}}">
+                <img src="{{playlist.tracks[0].cover}}"/>
+              </a>
+            </div>
+            <div class="playlist-content">
+              <h3><a href="/#/playlists/{{playlist.id}}">{{playlist.title | cut:false:40:'...'}}</a></h3>
+              <p>{{playlist.book.title | cut:false:40:'...'}}</p>
+              <p><em>{{playlist.genre}}</em></p>
+            </div>
+          </div>
+
+        </li>
+      </ul>
     </div>
   </div>
 </div>

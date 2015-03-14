@@ -1,9 +1,9 @@
 angular.module('userPlaylists', [])
-  .controller('userPlaylists', function($scope, User, Soundtrack) {
+  .controller('userPlaylists', function($scope, UserPlaylist, Soundtrack) {
 
-    User.get()
+    UserPlaylist.get()
       .success(function(data) {
-        $scope.playlists = data.rows;
+        $scope.playlists = data;
       });
 
     $scope.selectPlaylist = function(id) {

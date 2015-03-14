@@ -2,10 +2,25 @@ angular.module('main', [])
   .controller('main', function($scope, $http, $sce, $location, Spotify, User) {
 
     $scope.navopen = false;
+    $scope.genres = [
+      "Blues",
+      "Classical",
+      "Country/Folk",
+      "Electronic",
+      "Indie/Alternative",
+      "Jazz",
+      "Pop",
+      "R&B",
+      "Rap",
+      "Reggae",
+      "Rock",
+    ]
+    $scope.sort_genre = 'all';
 
     User.get()
       .success(function(data) {
-        $scope.playlist_count = data.count;
+        $scope.user = data;
+        $scope.playlist_count = data.soundtracks.length;
       });
 
     $scope.downloadPlaylist = function(soundtrack) {
